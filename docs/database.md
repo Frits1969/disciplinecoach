@@ -1,42 +1,93 @@
 # Database Design
 
-## Status
+## Current Status
 
 The data model is currently under design.
 
 ## Planned Entities
 
-### Discipline
+### Disciplines
 
-A discipline represents a domain within the system.
+A discipline represents a field of knowledge, expertise, activity, or interest within the system.
 
 Examples:
 
 - Badminton
 - Football
-- Hockey
+- Music
+- First Aid
+- Leadership
+
+Properties may include:
+
+- Name
+- Description
+- Logo
+- Image
+- Published state
 
 ### Users
 
 Users are managed by Joomla.
 
+DisciplineCoach extends Joomla users through memberships.
+
 ### Memberships
 
-Memberships connect users to disciplines.
+A membership connects a user to a discipline.
+
+Properties may include:
+
+- User
+- Discipline
+- Moderator Status
+
+A user may belong to multiple disciplines.
+
+A discipline may contain multiple users.
 
 ### Moderators
 
-Moderators are users responsible for managing a discipline.
+Moderator status is stored within the membership.
+
+This allows a user to be:
+
+- A moderator in Discipline A
+- A normal member in Discipline B
+- A moderator in Discipline C
+
+Moderator privileges are therefore discipline-specific.
 
 ### Content
 
-Future content types may include:
+Future content entities may include:
 
 - Exercises
 - Training plans
 - Documents
 - Images
+- Articles
+- Knowledge assets
+
+## Terminology Configuration
+
+The component internally uses the term "Discipline".
+
+The displayed terminology can be configured by the administrator.
+
+Examples:
+
+- Discipline
+- Sport
+- Musical Instrument
+- Subject
+- Domain
+- Specialization
+
+This configuration affects the user interface only and does not affect the database structure.
 
 ## Notes
 
-The database structure is not yet finalized.
+The final database schema has not yet been defined.
+
+Table names, indexes, relationships, and constraints remain subject to review.
