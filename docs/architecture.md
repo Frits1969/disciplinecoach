@@ -109,6 +109,12 @@ Moderator Privileges
 
 Users may select one or more disciplines.
 
+Users can change their discipline assignments.
+
+If a user becomes a member of a discipline, moderator privileges do not automatically follow.
+
+Moderator privileges must be explicitly assigned for each discipline.
+
 If a discipline does not exist:
 
 - The user submits a request.
@@ -122,7 +128,7 @@ The component internally uses the term "Discipline".
 
 Administrators may define an alternative label that is displayed throughout the user interface.
 
-Examples:
+Examples include:
 
 - Discipline
 - Sport
