@@ -9,7 +9,6 @@ The format is based on Keep a Changelog.
 ### Added
 
 - GitHub repository created
-- Initial project structure defined
 - Project documentation started
 
 ### Planned
