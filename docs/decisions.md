@@ -1,14 +1,12 @@
-### Terminology
+### Terminology Abstraction
 
 Decision:
 
-The project uses the term "Discipline" as its central concept.
+The software uses the term "Discipline" as its internal technical concept.
 
 Reason:
 
-The system must remain generic and should not be limited to a single area of application.
-
-A discipline represents a domain, specialization, field of interest, area of expertise, or knowledge domain for which members, moderators, and content can be managed.
+The software must remain generic and reusable across different application domains.
 
 Examples of disciplines include:
 
@@ -16,14 +14,27 @@ Examples of disciplines include:
 - Football
 - Hockey
 - Music
+- Guitar
+- Piano
 - First Aid
 - Leadership
-- Chess
 - Project Management
 - Languages
 - Volunteering
 
-This approach keeps DisciplineCoach suitable for a wide range of communities and knowledge-sharing platforms.
+Administrators must be able to define which term is displayed within the user interface.
+
+Examples include:
+
+- Discipline
+- Sport
+- Musical Instrument
+- Domain
+- Subject
+- Specialization
+- Area of Expertise
+
+This approach keeps the software flexible and adaptable to different communities and knowledge domains.
 
 Status:
 
