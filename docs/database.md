@@ -24,7 +24,7 @@ Properties may include:
 - Description
 - Logo
 - Image
-- Published state
+- Published State
 
 ### Users
 
@@ -63,11 +63,11 @@ Moderator privileges are therefore discipline-specific.
 Future content entities may include:
 
 - Exercises
-- Training plans
+- Training Plans
 - Documents
 - Images
 - Articles
-- Knowledge assets
+- Knowledge Assets
 
 ## Terminology Configuration
 
@@ -75,7 +75,7 @@ The component internally uses the term "Discipline".
 
 The displayed terminology can be configured by the administrator.
 
-Examples:
+Examples include:
 
 - Discipline
 - Sport
@@ -83,6 +83,7 @@ Examples:
 - Subject
 - Domain
 - Specialization
+- Area of Expertise
 
 This configuration affects the user interface only and does not affect the database structure.
 
