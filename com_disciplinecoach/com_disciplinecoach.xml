@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ========================================================================
+    DisciplineCoach
+    Joomla 6 Component
+    ========================================================================
+
+    File        : com_disciplinecoach.xml
+    Purpose     : Joomla component installation manifest.
+
+    Author      : Frits van Leeuwen
+    Created     : 2026-09-16
+    Modified    : 2026-09-16
+    Version     : 0.1.0
+
+    Copyright   : Copyright (C) 2026 Frits van Leeuwen
+    License     : GNU General Public License version 2 or later
+    ========================================================================
+-->
+
+<extension type="component" method="upgrade">
+
+    <name>com_disciplinecoach</name>
+
+    <author>Frits van Leeuwen</author>
+    <creationDate>2026-09-16</creationDate>
+    <copyright>Copyright (C) 2026 Frits van Leeuwen</copyright>
+    <license>GNU General Public License version 2 or later</license>
+
+    <version>0.1.0</version>
+
+    <description>DisciplineCoach Joomla Component</description>
+
+    <administration>
+        <menu>DisciplineCoach</menu>
+        <files folder="administrator">
+            <folder>services</folder>
+            <folder>src</folder>
+        </files>
+    </administration>
+
+</extension>
