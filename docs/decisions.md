@@ -2,8 +2,6 @@
 
 This document records important architectural and functional decisions for DisciplineCoach.
 
----
-
 ## 2026-09-16
 
 ### Terminology
@@ -16,7 +14,7 @@ Reason:
 
 The system must remain generic and should not be limited to sports.
 
-A discipline represents a field of expertise, knowledge, activity, specialization, interest, or community.
+A discipline represents a field of expertise, knowledge, activity, specialization, interest, community, or subject area.
 
 Examples include:
 
@@ -95,7 +93,7 @@ Reason:
 
 Joomla already provides authentication, authorization, registration, account activation, password management, and multilingual support.
 
-DisciplineCoach should extend Joomla users instead of replacing Joomla user management.
+DisciplineCoach extends Joomla users rather than replacing Joomla user management.
 
 Status:
 
@@ -113,13 +111,15 @@ Reason:
 
 Users may actively participate in multiple disciplines.
 
-Examples:
+Examples include:
 
 - Badminton
 - Football
 - Music
 - First Aid
 - Leadership
+- Languages
+- Project Management
 
 Status:
 
@@ -137,14 +137,15 @@ Reason:
 
 A user may have different responsibilities within different disciplines.
 
-Examples:
+Example:
 
 User:
+
 - Moderator in Badminton
 - Member in Volleyball
 - Moderator in Hockey
 
-Therefore, moderator privileges must be linked to the relationship between a user and a discipline.
+Moderator privileges are therefore linked to the relationship between a user and a discipline.
 
 Status:
 
@@ -165,6 +166,27 @@ This prevents duplicate or inconsistent disciplines and maintains quality contro
 If a user cannot find a suitable discipline, the user may submit a request.
 
 The Super Administrator reviews the request and decides whether the discipline should be added.
+
+Status:
+
+Accepted
+
+---
+
+### Initial Version Scope
+
+Decision:
+
+The initial version of DisciplineCoach focuses on:
+
+- User authentication through Joomla
+- Discipline management
+- Membership management
+- Moderator assignments
+
+Reason:
+
+A stable membership and discipline model must be established before introducing content-related functionality.
 
 Status:
 

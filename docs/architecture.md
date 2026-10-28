@@ -2,7 +2,7 @@
 
 ## Purpose
 
-DisciplineCoach is a multilingual Joomla component designed to manage disciplines, memberships, moderators, and discipline-related content.
+DisciplineCoach is a multilingual Joomla component designed to manage disciplines, memberships, moderators, and discipline-related communities.
 
 The component is intentionally designed to be independent of any specific subject area and can be used for sports, education, hobbies, professional knowledge domains, communities, and collaborative environments.
 
@@ -58,19 +58,6 @@ Moderator privileges are assigned through memberships and are discipline-specifi
 
 A user may be a moderator for one discipline and a regular member of another.
 
-### Content
-
-Content belongs to a discipline.
-
-Examples may include:
-
-- Exercises
-- Training plans
-- Documents
-- Images
-- Articles
-- Knowledge resources
-
 ## User Roles
 
 ### Registered User
@@ -97,10 +84,6 @@ Membership
 ↓
 Discipline
 
-Discipline
-↓
-Content
-
 Membership
 ↓
 Moderator Privileges
@@ -111,16 +94,16 @@ Users may select one or more disciplines.
 
 Users can change their discipline assignments.
 
-If a user becomes a member of a discipline, moderator privileges do not automatically follow.
-
-Moderator privileges must be explicitly assigned for each discipline.
-
 If a discipline does not exist:
 
 - The user submits a request.
 - A Super Administrator reviews the request.
 - The discipline is added to the system.
 - The discipline becomes available for all users.
+
+Moderator privileges do not automatically follow discipline assignments.
+
+Moderator privileges must be explicitly assigned for each discipline.
 
 ## Terminology
 
@@ -149,13 +132,12 @@ Initial languages:
 - Dutch
 - English
 
-Both system labels and discipline-related content should support multilingual usage.
+Both system labels and terminology should support multilingual usage.
 
 ## Future Expansion
 
 The architecture should support:
 
-- Multiple disciplines per user
 - Multiple moderators per discipline
 - Content workflows
 - Approval processes

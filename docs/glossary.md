@@ -2,46 +2,85 @@
 
 ## Discipline
 
-A domain, specialization, or area of interest for which knowledge, exercises, training plans, and other information are managed.
+A discipline represents a domain, specialization, field of interest, area of expertise, activity, community, or subject area.
 
-Examples:
+Examples include:
 
 - Badminton
 - Football
 - Hockey
-- First Aid
 - Music
+- Guitar
+- Piano
+- First Aid
+- Leadership
+- Languages
+- Volunteering
+- Project Management
+
+A discipline is the central organizing concept within DisciplineCoach.
 
 ## User
 
 A registered Joomla user.
 
-A user can be assigned to a discipline.
-
-## Trainer
-
-A user who is active within a discipline.
-
-A trainer can access content and may contribute content related to the assigned discipline.
-
-## Moderator
-
-A user responsible for maintaining the quality of content within a discipline.
-
-A moderator can review and manage contributions within the assigned discipline.
+Users are managed by Joomla and may belong to one or more disciplines.
 
 ## Membership
 
-The relationship between a user and a discipline.
+A membership represents the relationship between a user and a discipline.
 
-A membership defines which discipline a user belongs to.
+A user may have multiple memberships.
+
+A discipline may have multiple members.
+
+## Moderator
+
+A moderator is a user with additional responsibilities within a specific discipline.
+
+Moderator privileges are assigned through memberships and are discipline-specific.
+
+A user may be a moderator in one discipline and a regular member in another.
 
 ## Super Administrator
 
-A user with full administrative privileges within the system.
+A Joomla Super Administrator with full administrative privileges.
 
-The super administrator can manage disciplines, assign users to disciplines, and appoint moderators.
+The Super Administrator can:
+
+- Create disciplines
+- Manage disciplines
+- Approve discipline requests
+- Assign memberships
+- Assign moderators
 
 ## Content
 
-All information stored within a discipline, including exercises, training plans, images, documents, and other knowledge resources.
+Content represents information that belongs to a discipline.
+
+Examples may include:
+
+- Exercises
+- Training plans
+- Documents
+- Images
+- Articles
+- Knowledge resources
+
+Content management is not part of the initial version of DisciplineCoach but is planned for future development.
+
+## Terminology
+
+The component internally uses the term "Discipline".
+
+Administrators may configure alternative labels for display purposes.
+
+Examples include:
+
+- Discipline
+- Sport
+- Musical Instrument
+- Subject
+- Domain
+- Specialization
+- Area of Expertise

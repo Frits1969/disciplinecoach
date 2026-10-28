@@ -1,50 +1,56 @@
-# DisciplineCoach Roadmap
+## DisciplineCoach Roadmap
 
-## Phase 1 - Foundation
+### Phase 1 - Foundation
 
 - Create GitHub repository
 - Define architecture
 - Define database design
 - Create Joomla component skeleton
 
-## Phase 2 - Discipline Management
+### Phase 2 - Discipline Management
 
 - Create discipline administration
 - Create discipline list view
 - Create discipline edit form
 - Create publish/unpublish functionality
 
-## Phase 3 - Membership Management
+### Phase 3 - Membership Management
 
 - Assign users to disciplines
 - Remove users from disciplines
-- View discipline memberships
+- Multiple disciplines per user
+- Discipline requests
 
-## Phase 4 - Moderator Management
+### Phase 4 - Moderator Management
 
 - Assign moderators
 - Revoke moderator assignments
-- Moderator overview
+- Discipline-specific moderator permissions
 
-## Phase 5 - Content Foundation
+### Phase 5 - User Experience
 
-- Content ownership
-- Discipline filtering
-- Access control
-
-## Phase 6 - Frontend
-
-- User profile integration
-- Discipline selection
+- User discipline selection
+- Discipline overview
 - Membership overview
+- Moderator status overview
 
-## Phase 7 - Multilingual Support
+### Phase 6 - Multilingual Support
 
 - Full language integration
 - Dutch language pack
 - English language pack
+- Terminology configuration
 
-## Phase 8 - Documentation
+### Phase 7 - Future Extensions
+
+- Content management
+- Exercises
+- Training plans
+- Documents
+- Images
+- Community features
+
+### Phase 8 - Documentation
 
 - Installation guide
 - Administrator guide
