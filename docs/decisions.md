@@ -1,19 +1,16 @@
-# Design Decisions
+## Design Decisions
 
 This document records important architectural and functional decisions for DisciplineCoach.
 
-## 2026-09-16
+### 2026-09-16
 
-### Terminology
+#### Terminology
 
 Decision:
-
 The project uses the term "Discipline" as its primary business concept.
 
 Reason:
-
 The system must remain generic and should not be limited to sports.
-
 A discipline represents a field of expertise, knowledge, activity, specialization, interest, community, or subject area.
 
 Examples include:
@@ -31,15 +28,13 @@ Examples include:
 - Project Management
 
 Status:
-
 Accepted
 
 ---
 
-### Terminology Configuration
+#### Terminology Configuration
 
 Decision:
-
 The software uses the term "Discipline" internally.
 
 Administrators may configure an alternative label for display throughout the user interface.
@@ -56,59 +51,49 @@ Examples include:
 - Activity
 
 Reason:
-
 Different communities may use different terminology while requiring the same underlying functionality.
 
 The configured label affects only the user interface and does not modify the internal data model.
 
 Status:
-
 Accepted
 
 ---
 
-### Documentation Language
+#### Documentation Language
 
 Decision:
-
 Project documentation is maintained in English.
 
 Reason:
-
 English is the common language for software development and GitHub projects.
 
 Status:
-
 Accepted
 
 ---
 
-### Joomla User Management
+#### Joomla User Management
 
 Decision:
-
 User accounts are managed by Joomla.
 
 Reason:
-
 Joomla already provides authentication, authorization, registration, account activation, password management, and multilingual support.
 
 DisciplineCoach extends Joomla users rather than replacing Joomla user management.
 
 Status:
-
 Accepted
 
 ---
 
-### Membership Model
+#### Membership Model
 
 Decision:
-
 A user may belong to multiple disciplines.
 
 Reason:
-
 Users may actively participate in multiple disciplines.
 
 Examples include:
@@ -122,25 +107,21 @@ Examples include:
 - Project Management
 
 Status:
-
 Accepted
 
 ---
 
-### Moderator Assignment Model
+#### Moderator Assignment Model
 
 Decision:
-
 Moderator status is assigned per membership and not per user.
 
 Reason:
-
 A user may have different responsibilities within different disciplines.
 
 Example:
 
 User:
-
 - Moderator in Badminton
 - Member in Volleyball
 - Moderator in Hockey
@@ -148,19 +129,16 @@ User:
 Moderator privileges are therefore linked to the relationship between a user and a discipline.
 
 Status:
-
 Accepted
 
 ---
 
-### Discipline Creation
+#### Discipline Creation
 
 Decision:
-
 Disciplines may only be created by a Super Administrator.
 
 Reason:
-
 This prevents duplicate or inconsistent disciplines and maintains quality control.
 
 If a user cannot find a suitable discipline, the user may submit a request.
@@ -168,15 +146,13 @@ If a user cannot find a suitable discipline, the user may submit a request.
 The Super Administrator reviews the request and decides whether the discipline should be added.
 
 Status:
-
 Accepted
 
 ---
 
-### Initial Version Scope
+#### Initial Version Scope
 
 Decision:
-
 The initial version of DisciplineCoach focuses on:
 
 - User authentication through Joomla
@@ -185,41 +161,92 @@ The initial version of DisciplineCoach focuses on:
 - Moderator assignments
 
 Reason:
-
 A stable membership and discipline model must be established before introducing content-related functionality.
 
 Status:
-
 Accepted
 
 ---
 
-### Initial Multilingual Support
+#### Initial Multilingual Support
 
 Decision:
-
 The first supported languages are Dutch and English.
 
 Reason:
-
 The initial target audience consists of Dutch-speaking and English-speaking users.
 
 Status:
-
 Accepted
 
 ---
 
-### Design Philosophy
+#### Design Philosophy
 
 Decision:
-
 Documentation and architectural design must be completed before implementing functionality.
 
 Reason:
-
 A stable architecture reduces rework and keeps development organized.
 
 Status:
-
 Accepted
+
+---
+
+### 2026-10-29
+
+#### Joomla 6 Native Architecture
+
+Decision:
+DisciplineCoach follows the Joomla 6 architecture and conventions wherever possible.
+
+Reason:
+Joomla already provides proven solutions for:
+
+- User management
+- Authentication
+- Authorization
+- ACL
+- Multilingual support
+- MVC
+- Extension installation
+
+Custom functionality should only be developed when Joomla does not already provide the required functionality.
+
+Status:
+Accepted
+
+---
+
+#### Component Packaging
+
+Decision:
+Project documentation remains outside the Joomla component package.
+
+Reason:
+Documentation is intended for developers and contributors and should not be distributed as part of the installation package.
+
+Status:
+Accepted
+
+---
+
+#### Joomla MVC Foundation
+
+Decision:
+The component is implemented using the Joomla 6 MVC architecture.
+
+Implemented:
+
+- Service Provider
+- Component Class
+- Display Controller
+- HtmlView
+- Dashboard Template
+
+Reason:
+Using the native Joomla MVC framework provides maintainability, consistency, and future extensibility.
+
+Status:
+Implemented

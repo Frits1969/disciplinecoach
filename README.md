@@ -1,8 +1,10 @@
 # DisciplineCoach
 
-DisciplineCoach is a multilingual Joomla component for managing disciplines, memberships, moderator assignments, and discipline-based communities.
+DisciplineCoach is a multilingual Joomla 6 component for managing disciplines, memberships, moderator assignments, and discipline-based communities.
 
-The component is designed as a flexible foundation for organizations, communities, training platforms, educational environments, and collaborative knowledge domains.
+The component is designed as a flexible foundation for organisations, communities, training platforms, educational environments, and collaborative knowledge domains.
+
+---
 
 ## Key Concepts
 
@@ -11,6 +13,8 @@ The component is designed as a flexible foundation for organizations, communitie
 - Memberships
 - Moderators
 - Community Management
+
+---
 
 ## Goals
 
@@ -21,6 +25,8 @@ The component is designed as a flexible foundation for organizations, communitie
 - Multilingual support
 - Flexible terminology configuration
 
+---
+
 ## Design Principles
 
 - Generic and reusable
@@ -30,30 +36,84 @@ The component is designed as a flexible foundation for organizations, communitie
 - Extensible architecture
 - Configurable terminology
 
-## Project Status
+---
 
-The project is currently in the design phase.
+## Current Status
+
+### Version 0.1.0
+
+The Joomla 6 component foundation is operational.
+
+Implemented:
+
+- Joomla 6 component installer
+- Service Provider
+- Component bootstrap
+- MVC infrastructure
+- Display Controller
+- Dashboard View
+- Dashboard Template
+- Administrator menu integration
+
+The component can now:
+
+- Install successfully in Joomla 6
+- Appear in the Joomla administrator menu
+- Load through the Joomla MVC framework
+- Display a working administrator dashboard
+
+---
+
+## Next Milestones
+
+### Disciplines
+
+- Disciplines view
+- Disciplines controller
+- Disciplines dashboard page
+- Disciplines database table
+
+### Memberships
+
+- Membership administration
+- User-discipline relations
+- Moderator assignments
+
+### Discipline Requests
+
+- Request workflow
+- Approval process
+- Administration screens
+
+---
 
 ## Requirements
 
 - Joomla 6.x
 - PHP 8.2+
 
+---
+
 ## Repository Structure
 
 ```text
-docs/
+disciplinecoach
+│
+├── docs
+│   ├── architecture.md
+│   ├── database.md
+│   ├── decisions.md
+│   └── glossary.md
+│
+├── CHANGELOG.md
+├── LICENSE
+├── README.md
+├── ROADMAP.md
+│
+└── com_disciplinecoach
 ```
 
-Current documentation:
-
-```text
-docs/
-├── architecture.md
-├── database.md
-├── decisions.md
-└── glossary.md
-```
+---
 
 ## License
 
