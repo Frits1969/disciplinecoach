@@ -9,8 +9,8 @@
     Purpose     : Joomla component installation manifest.
 
     Author      : Frits van Leeuwen
-    Created     : 2026-09-16
-    Modified    : 2026-09-16
+    Created     : 2026-10-28
+    Modified    : 2026-10-29
     Version     : 0.1.0
 
     Copyright   : Copyright (C) 2026 Frits van Leeuwen
@@ -18,12 +18,12 @@
     ========================================================================
 -->
 
-<extension type="component" method="upgrade">
+<extension type="component" method="upgrade" version="6.0">
 
     <name>com_disciplinecoach</name>
 
     <author>Frits van Leeuwen</author>
-    <creationDate>2026-09-16</creationDate>
+    <creationDate>2026-10-28</creationDate>
     <copyright>Copyright (C) 2026 Frits van Leeuwen</copyright>
     <license>GNU General Public License version 2 or later</license>
 
@@ -31,12 +31,20 @@
 
     <description>DisciplineCoach Joomla Component</description>
 
+    <namespace path="src">Fvl\Component\DisciplineCoach\Administrator</namespace>
+
     <administration>
-        <menu>DisciplineCoach</menu>
+
+        <menu link="index.php?option=com_disciplinecoach">
+            DisciplineCoach
+        </menu>
+
         <files folder="administrator">
             <folder>services</folder>
             <folder>src</folder>
+            <folder>tmpl</folder>
         </files>
+
     </administration>
 
 </extension>
