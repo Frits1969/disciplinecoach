@@ -1,252 +1,85 @@
-## Design Decisions
+#### 2026-10-31
 
-This document records important architectural and functional decisions for DisciplineCoach.
-
-### 2026-09-16
-
-#### Terminology
+##### Dashboard Navigation Model
 
 Decision:
-The project uses the term "Discipline" as its primary business concept.
+
+The administrator dashboard serves as the primary navigation hub of DisciplineCoach.
+
+The dashboard provides direct access to the main management modules through dashboard tiles.
+
+The initial dashboard modules are:
+
+- Disciplines
+- Coaches
+- Requests
+- Configuration
 
 Reason:
-The system must remain generic and should not be limited to sports.
-A discipline represents a field of expertise, knowledge, activity, specialization, interest, community, or subject area.
 
-Examples include:
+The dashboard should provide administrators with immediate access to the most important management areas of the application.
 
-- Badminton
-- Football
-- Hockey
-- Music
-- Guitar
-- Piano
-- First Aid
-- Leadership
-- Languages
-- Volunteering
-- Project Management
+A tile-based interface is visually clear, easy to extend, and suitable for both small and large installations.
+
+Additional modules may be added in future versions without changing the overall navigation structure.
 
 Status:
-Accepted
 
----
-
-#### Terminology Configuration
-
-Decision:
-The software uses the term "Discipline" internally.
-
-Administrators may configure an alternative label for display throughout the user interface.
-
-Examples include:
-
-- Discipline
-- Sport
-- Musical Instrument
-- Subject
-- Domain
-- Specialization
-- Area of Expertise
-- Activity
-
-Reason:
-Different communities may use different terminology while requiring the same underlying functionality.
-
-The configured label affects only the user interface and does not modify the internal data model.
-
-Status:
-Accepted
-
----
-
-#### Documentation Language
-
-Decision:
-Project documentation is maintained in English.
-
-Reason:
-English is the common language for software development and GitHub projects.
-
-Status:
-Accepted
-
----
-
-#### Joomla User Management
-
-Decision:
-User accounts are managed by Joomla.
-
-Reason:
-Joomla already provides authentication, authorization, registration, account activation, password management, and multilingual support.
-
-DisciplineCoach extends Joomla users rather than replacing Joomla user management.
-
-Status:
-Accepted
-
----
-
-#### Membership Model
-
-Decision:
-A user may belong to multiple disciplines.
-
-Reason:
-Users may actively participate in multiple disciplines.
-
-Examples include:
-
-- Badminton
-- Football
-- Music
-- First Aid
-- Leadership
-- Languages
-- Project Management
-
-Status:
-Accepted
-
----
-
-#### Moderator Assignment Model
-
-Decision:
-Moderator status is assigned per membership and not per user.
-
-Reason:
-A user may have different responsibilities within different disciplines.
-
-Example:
-
-User:
-- Moderator in Badminton
-- Member in Volleyball
-- Moderator in Hockey
-
-Moderator privileges are therefore linked to the relationship between a user and a discipline.
-
-Status:
-Accepted
-
----
-
-#### Discipline Creation
-
-Decision:
-Disciplines may only be created by a Super Administrator.
-
-Reason:
-This prevents duplicate or inconsistent disciplines and maintains quality control.
-
-If a user cannot find a suitable discipline, the user may submit a request.
-
-The Super Administrator reviews the request and decides whether the discipline should be added.
-
-Status:
-Accepted
-
----
-
-#### Initial Version Scope
-
-Decision:
-The initial version of DisciplineCoach focuses on:
-
-- User authentication through Joomla
-- Discipline management
-- Membership management
-- Moderator assignments
-
-Reason:
-A stable membership and discipline model must be established before introducing content-related functionality.
-
-Status:
-Accepted
-
----
-
-#### Initial Multilingual Support
-
-Decision:
-The first supported languages are Dutch and English.
-
-Reason:
-The initial target audience consists of Dutch-speaking and English-speaking users.
-
-Status:
-Accepted
-
----
-
-#### Design Philosophy
-
-Decision:
-Documentation and architectural design must be completed before implementing functionality.
-
-Reason:
-A stable architecture reduces rework and keeps development organized.
-
-Status:
-Accepted
-
----
-
-### 2026-10-29
-
-#### Joomla 6 Native Architecture
-
-Decision:
-DisciplineCoach follows the Joomla 6 architecture and conventions wherever possible.
-
-Reason:
-Joomla already provides proven solutions for:
-
-- User management
-- Authentication
-- Authorization
-- ACL
-- Multilingual support
-- MVC
-- Extension installation
-
-Custom functionality should only be developed when Joomla does not already provide the required functionality.
-
-Status:
-Accepted
-
----
-
-#### Component Packaging
-
-Decision:
-Project documentation remains outside the Joomla component package.
-
-Reason:
-Documentation is intended for developers and contributors and should not be distributed as part of the installation package.
-
-Status:
-Accepted
-
----
-
-#### Joomla MVC Foundation
-
-Decision:
-The component is implemented using the Joomla 6 MVC architecture.
-
-Implemented:
-
-- Service Provider
-- Component Class
-- Display Controller
-- HtmlView
-- Dashboard Template
-
-Reason:
-Using the native Joomla MVC framework provides maintainability, consistency, and future extensibility.
-
-Status:
 Implemented
+
+---
+
+##### Coach Terminology
+
+Decision:
+
+The term "Coach" is used within the administrative interface instead of "Trainer".
+
+Reason:
+
+The term Coach is more generic and better fits the broad scope of DisciplineCoach.
+
+The application is intended to support sports, education, community management, training environments, and knowledge domains.
+
+Status:
+
+Accepted
+
+---
+
+##### Moderator Role Model
+
+Decision:
+
+Moderators remain coaches with additional permissions.
+
+The administrator interface should therefore distinguish between:
+
+- Coach
+- Coach / Moderator
+
+Reason:
+
+A moderator is not considered a separate type of user.
+
+Moderator permissions are an extension of the coach role within a specific discipline.
+
+Status:
+
+Accepted
+
+---
+
+##### Dashboard-First Development Approach
+
+Decision:
+
+Future modules are first represented on the dashboard before full functionality is implemented.
+
+Reason:
+
+This establishes the navigation structure early and allows the application architecture to evolve in a controlled and predictable manner.
+
+Status:
+
+Accepted

@@ -27,7 +27,7 @@
     <copyright>Copyright (C) 2026 Frits van Leeuwen</copyright>
     <license>GNU General Public License version 2 or later</license>
 
-    <version>0.1.0</version>
+    <version>0.1.1</version>
 
     <description>DisciplineCoach Joomla Component</description>
 
@@ -46,5 +46,10 @@
         </files>
 
     </administration>
+
+    <media destination="com_disciplinecoach" folder="media/com_disciplinecoach">
+        <folder>css</folder>
+        <folder>images</folder>
+    </media>
 
 </extension>

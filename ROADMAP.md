@@ -2,95 +2,177 @@
 
 ## Phase 1 - Foundation ✅ Completed
 
-- Create GitHub repository
-- Define architecture
-- Define database design
-- Create Joomla component skeleton
-- Create Joomla installation manifest
-- Create Service Provider
-- Create Component Class
-- Create Display Controller
-- Create Dashboard View
-- Create Dashboard Template
-- Create working administrator dashboard
+### Documentation
+
+- GitHub repository created
+- Architecture defined
+- Database design documented
+- Design decisions documented
+- Terminology defined
+- Project roadmap established
+
+### Joomla 6 Foundation
+
+- Joomla component skeleton created
+- Installation manifest created
+- Service Provider implemented
+- Component Class implemented
+- Display Controller implemented
+- Dashboard View implemented
+- Dashboard Template implemented
+- Administrator menu integration completed
+- Working Joomla MVC architecture established
 
 ---
 
-## Phase 2 - Discipline Management
+## Phase 2 - Dashboard ✅ Completed (Version 0.1.1)
 
-- Create Disciplines MVC structure
-- Create disciplines administration
-- Create disciplines list view
-- Create discipline edit form
-- Create publish/unpublish functionality
+### Dashboard
+
+- Dashboard CSS implemented
+- Dashboard icon support implemented
+- Dashboard graphics integrated
+- Dashboard tile navigation implemented
+
+### Dashboard Modules
+
+- Disciplines tile
+- Coaches tile
+- Requests tile
+- Configuration tile
+
+### Result
+
+The dashboard serves as the central navigation hub of DisciplineCoach.
+
+---
+
+## Phase 3 - Discipline Management (Version 0.1.2)
+
+### MVC Structure
+
+- Create Disciplines Controller
+- Create Disciplines View
+- Create Disciplines Template
+
+### Database
+
 - Create disciplines database table
-- Create discipline model
+- Create installation SQL scripts
+- Create update SQL scripts
+
+### Administration
+
+- Create disciplines overview
+- Create new discipline
+- Edit discipline
+- Delete discipline
+- Upload discipline image
+- Publish/unpublish discipline
 
 ---
 
-## Phase 3 - Membership Management
+## Phase 4 - Coach Management
 
-- Assign users to disciplines
-- Remove users from disciplines
-- Support multiple disciplines per user
-- Membership administration interface
-- Membership database table
+### Coaches
+
+- Coach administration
+- Moderator assignments
+- Coach discipline memberships
+
+### Administration
+
+- Search coaches
+- Filter coaches
+- Sort coaches
+- Assign coaches to disciplines
+- Remove coaches from disciplines
+- Promote coach to moderator
+- Demote moderator to coach
 
 ---
 
-## Phase 4 - Discipline Requests
+## Phase 5 - Discipline Requests
 
-- Request discipline functionality
+### Request Workflow
+
+- Request new discipline
 - Request administration
-- Approve discipline requests
-- Reject discipline requests
-- Request workflow management
+- Approve requests
+- Reject requests
+
+### Administration
+
+- Request overview
+- Request processing
+- Audit trail
 
 ---
 
-## Phase 5 - Moderator Management
+## Phase 6 - Configuration
 
-- Assign moderators
-- Revoke moderator assignments
-- Discipline-specific moderator permissions
-- Moderator administration
+### Terminology
 
----
+- Custom discipline labels
+- Terminology replacement system
 
-## Phase 6 - User Experience
+Examples:
 
-- User discipline selection
-- Discipline overview
-- Membership overview
-- Moderator status overview
-- Dashboard improvements
+- Discipline → Sport
+- Discipline → Musical Instrument
+- Discipline → Subject
+- Discipline → Domain
 
----
+### Languages
 
-## Phase 7 - Multilingual Support
-
-- Full language integration
 - Dutch language pack
 - English language pack
-- Terminology configuration
-- Administration language strings
+
+### Settings
+
+- General configuration
+- Application settings
 
 ---
 
-## Phase 8 - Future Extensions
+## Phase 7 - User Experience
 
-- Content management
-- Exercises
-- Training plans
-- Documents
-- Images
-- Community features
+### Frontend Features
+
+- User discipline overview
+- Membership overview
+- Moderator overview
+
+### Dashboard
+
+- Statistics
+- Status information
+- Quick actions
 
 ---
 
-## Phase 9 - Documentation
+## Phase 8 - Documentation
+
+### User Documentation
 
 - Installation guide
 - Administrator guide
-- Developer guide
 - User guide
+
+### Developer Documentation
+
+- Architecture guide
+- Database guide
+- Extension development guide
+
+---
+
+## Phase 9 - Future Extensions
+
+### Optional Features
+
+- Documents
+- Images
+- Exercises
+- Training plans
+- Community features

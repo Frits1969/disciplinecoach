@@ -6,6 +6,36 @@ The format is based on Keep a Changelog.
 
 ---
 
+## [0.1.1] - 2026-10-30
+
+### Added
+
+- Dashboard CSS
+- Dashboard tile navigation
+- Dashboard icon support
+- Custom dashboard graphics
+- Dashboard module layout
+
+### Dashboard Modules
+
+- Disciplines
+- Coaches
+- Requests
+- Configuration
+
+### Improved
+
+- Dashboard appearance
+- Dashboard navigation structure
+- Media file integration
+- CSS asset loading
+
+### Result
+
+The application now provides a visual management dashboard and a primary navigation structure for future development.
+
+---
+
 ## [0.1.0] - 2026-10-29
 
 ### Added
@@ -28,14 +58,6 @@ The component:
 - Appears in the Joomla administrator menu
 - Loads through the Joomla MVC framework
 - Displays a working administrator dashboard
-
-### Next
-
-- Disciplines administration
-- Disciplines MVC implementation
-- Disciplines database table
-- Membership administration
-- Discipline request workflow
 
 ---
 

@@ -10,8 +10,8 @@
  *
  * Author      : Frits van Leeuwen
  * Created     : 2026-10-29
- * Modified    : 2026-10-29
- * Version     : 0.1.0
+ * Modified    : 2026-10-30
+ * Version     : 0.1.1
  *
  * Copyright   : Copyright (C) 2026 Frits van Leeuwen
  * License     : GNU General Public License version 2 or later
@@ -23,6 +23,7 @@ namespace Fvl\Component\DisciplineCoach\Administrator\View\Dashboard;
 
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 
 /**
@@ -33,10 +34,16 @@ class HtmlView extends BaseHtmlView
     /**
      * Displays the view.
      *
-     * @param   string|null  $tpl  Optional template name.
+     * @param string|null $tpl Optional template name.
      */
     public function display($tpl = null): void
     {
+        $document = Factory::getApplication()->getDocument();
+
+        $document->addStyleSheet(
+            '/media/com_disciplinecoach/css/dashboard.css'
+        );
+
         parent::display($tpl);
     }
 }

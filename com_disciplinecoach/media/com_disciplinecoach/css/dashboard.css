@@ -1,0 +1,49 @@
+/**
+ * ========================================================================
+ * DisciplineCoach
+ * Joomla 6 Component
+ * ========================================================================
+ *
+ * File        : dashboard.css
+ * Purpose     : Styling for the administrator dashboard.
+ *               Defines the layout, tiles, icons, cards and visual
+ *               appearance of the DisciplineCoach dashboard.
+ *
+ * Author      : Frits van Leeuwen
+ * Created     : 2026-10-30
+ * Modified    : 2026-10-30
+ * Version     : 0.1.1
+ *
+ * Copyright   : Copyright (C) 2026 Frits van Leeuwen
+ * License     : GNU General Public License version 2 or later
+ *
+ * ========================================================================
+ */
+
+.dc-dashboard-tile {
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.dc-dashboard-tile:hover {
+    transform: translateY(-3px);
+}
+
+.dc-dashboard-icon {
+    margin-bottom: 1rem;
+}
+
+.dc-dashboard-icon img {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+}
+
+.dc-dashboard-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.dc-dashboard-description {
+    color: #666;
+}

@@ -4,17 +4,13 @@ DisciplineCoach is a multilingual Joomla 6 component for managing disciplines, m
 
 The component is designed as a flexible foundation for organisations, communities, training platforms, educational environments, and collaborative knowledge domains.
 
----
-
 ## Key Concepts
 
 - Disciplines
-- Users
+- Coaches
 - Memberships
 - Moderators
 - Community Management
-
----
 
 ## Goals
 
@@ -25,8 +21,6 @@ The component is designed as a flexible foundation for organisations, communitie
 - Multilingual support
 - Flexible terminology configuration
 
----
-
 ## Design Principles
 
 - Generic and reusable
@@ -36,11 +30,9 @@ The component is designed as a flexible foundation for organisations, communitie
 - Extensible architecture
 - Configurable terminology
 
----
-
 ## Current Status
 
-### Version 0.1.0
+### Version 0.1.1
 
 The Joomla 6 component foundation is operational.
 
@@ -54,6 +46,9 @@ Implemented:
 - Dashboard View
 - Dashboard Template
 - Administrator menu integration
+- Dashboard CSS
+- Dashboard tile navigation
+- Custom dashboard icons
 
 The component can now:
 
@@ -61,38 +56,52 @@ The component can now:
 - Appear in the Joomla administrator menu
 - Load through the Joomla MVC framework
 - Display a working administrator dashboard
+- Display custom dashboard icons
+- Display navigation tiles for the main modules
 
----
+## Dashboard Modules
 
-## Next Milestones
+The current dashboard contains the following modules:
+
+- Disciplines
+- Coaches
+- Requests
+- Configuration
+
+These modules form the primary navigation structure of the application.
+
+## Planned Features
 
 ### Disciplines
 
-- Disciplines view
-- Disciplines controller
-- Disciplines dashboard page
-- Disciplines database table
+- Discipline administration
+- Discipline images
+- Discipline database table
+- Discipline search and filtering
 
-### Memberships
+### Coaches
 
-- Membership administration
-- User-discipline relations
+- Coach management
 - Moderator assignments
+- Discipline memberships
+- Search, filtering and sorting
 
-### Discipline Requests
+### Requests
 
-- Request workflow
-- Approval process
-- Administration screens
+- Discipline requests
+- Approval workflow
+- Request administration
 
----
+### Configuration
+
+- Terminology configuration
+- Language settings
+- System settings
 
 ## Requirements
 
 - Joomla 6.x
 - PHP 8.2+
-
----
 
 ## Repository Structure
 
@@ -112,8 +121,6 @@ disciplinecoach
 │
 └── com_disciplinecoach
 ```
-
----
 
 ## License
 
