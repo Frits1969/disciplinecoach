@@ -32,32 +32,46 @@ The component is designed as a flexible foundation for organisations, communitie
 
 ## Current Status
 
-### Version 0.1.1
+### Version 0.1.2
 
-The Joomla 6 component foundation is operational.
+The Discipline administration module is now fully operational.
 
 Implemented:
 
-- Joomla 6 component installer
-- Service Provider
-- Component bootstrap
-- MVC infrastructure
-- Display Controller
-- Dashboard View
-- Dashboard Template
-- Administrator menu integration
-- Dashboard CSS
-- Dashboard tile navigation
-- Custom dashboard icons
+- Discipline database table
+- Discipline create functionality
+- Discipline edit functionality
+- Discipline save functionality
+- Discipline delete functionality
+- Bulk delete functionality
+- Publish functionality
+- Unpublish functionality
+- Bulk publish functionality
+- Bulk unpublish functionality
+- Discipline search
+- Discipline status filtering
+- Discipline sorting
+- Clickable discipline rows
+- Discipline image support
+- Joomla Media Manager integration
+- Discipline image thumbnails
+- Administrator CSS integration
+- Select all / deselect all functionality
 
 The component can now:
 
 - Install successfully in Joomla 6
-- Appear in the Joomla administrator menu
-- Load through the Joomla MVC framework
 - Display a working administrator dashboard
-- Display custom dashboard icons
-- Display navigation tiles for the main modules
+- Create disciplines
+- Edit disciplines
+- Delete disciplines
+- Publish disciplines
+- Unpublish disciplines
+- Search by title and alias
+- Filter by publication status
+- Sort by title, alias and status
+- Store discipline images
+- Display discipline thumbnails
 
 ## Dashboard Modules
 
@@ -72,12 +86,24 @@ These modules form the primary navigation structure of the application.
 
 ## Planned Features
 
+### Version 0.1.3 - Multilingual Support
+
+Planned:
+
+- Joomla language file integration
+- Administrator interface translations
+- Frontend language support
+- Configurable discipline descriptions per language
+- Multilingual terminology management
+- Translation-ready forms
+- Translation-ready dashboard
+
 ### Disciplines
 
-- Discipline administration
-- Discipline images
-- Discipline database table
-- Discipline search and filtering
+- AI-generated discipline imagery
+- Image management improvements
+- Advanced filtering
+- Pagination
 
 ### Coaches
 
@@ -105,22 +131,14 @@ These modules form the primary navigation structure of the application.
 
 ## Repository Structure
 
-```text
 disciplinecoach
-│
+
 ├── docs
-│   ├── architecture.md
-│   ├── database.md
-│   ├── decisions.md
-│   └── glossary.md
-│
 ├── CHANGELOG.md
 ├── LICENSE
 ├── README.md
 ├── ROADMAP.md
-│
 └── com_disciplinecoach
-```
 
 ## License
 

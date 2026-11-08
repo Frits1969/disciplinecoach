@@ -4,7 +4,53 @@ All notable changes to this project will be documented in this file.
 
 The format is based on Keep a Changelog.
 
----
+## [0.1.3] - Planned
+
+### Planned
+
+- Joomla language file implementation
+- Administrator translations
+- Frontend translations
+- Multilingual discipline texts
+- Multilingual terminology configuration
+- Language-aware forms
+
+## [0.1.2] - 2026-11-08
+
+### Added
+
+- Discipline database table
+- Discipline create functionality
+- Discipline edit functionality
+- Discipline delete functionality
+- Bulk delete functionality
+- Publish functionality
+- Unpublish functionality
+- Bulk publish functionality
+- Bulk unpublish functionality
+- Search by title
+- Search by alias
+- Status filtering
+- Sorting by title
+- Sorting by alias
+- Sorting by publication status
+- Joomla Media Manager image integration
+- Discipline image storage
+- Discipline image thumbnails
+- Clickable discipline rows
+- Select all / deselect all support
+
+### Improved
+
+- Discipline administration workflow
+- Discipline overview usability
+- Discipline image handling
+- Form integration
+- CSS styling and user experience
+
+### Result
+
+The Discipline module is now fully functional and can be used to manage disciplines, images and publication states within Joomla 6.
 
 ## [0.1.1] - 2026-10-30
 
@@ -34,8 +80,6 @@ The format is based on Keep a Changelog.
 
 The application now provides a visual management dashboard and a primary navigation structure for future development.
 
----
-
 ## [0.1.0] - 2026-10-29
 
 ### Added
@@ -58,8 +102,6 @@ The component:
 - Appears in the Joomla administrator menu
 - Loads through the Joomla MVC framework
 - Displays a working administrator dashboard
-
----
 
 ## [0.0.1] - 2026-09-16
 
