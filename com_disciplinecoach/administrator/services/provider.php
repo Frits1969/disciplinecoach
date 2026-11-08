@@ -6,13 +6,14 @@
  * ========================================================================
  *
  * File        : provider.php
+ * Path        : administrator/services
  * Purpose     : Registers the component services within Joomla's
  *               dependency injection container.
  *
  * Author      : Frits van Leeuwen
  * Created     : 2026-10-28
- * Modified    : 2026-10-29
- * Version     : 0.1.0
+ * Modified    : 2026-10-31
+ * Version     : 0.1.2
  *
  * Copyright   : Copyright (C) 2026 Frits van Leeuwen
  * License     : GNU General Public License version 2 or later

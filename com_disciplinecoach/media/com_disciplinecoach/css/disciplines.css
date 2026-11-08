@@ -1,0 +1,64 @@
+/**
+ * ========================================================================
+ * DisciplineCoach
+ * Joomla 6 Component
+ * ========================================================================
+ *
+ * File        : disciplines.css
+ * Path        : media/com_disciplinecoach/css/disciplines.css
+ * Purpose     : Styling for the Disciplines administration view.
+ *
+ * Author      : Frits van Leeuwen
+ * Created     : 2026-10-31
+ * Modified    : 2026-11-08
+ * Version     : 0.1.2
+ *
+ * Copyright   : Copyright (C) 2026 Frits van Leeuwen
+ * License     : GNU General Public License version 2 or later
+ *
+ * ========================================================================
+ */
+
+.dc-disciplines-header {
+    margin-bottom: 2rem;
+}
+
+.dc-toolbar {
+    margin-bottom: 1.5rem;
+}
+
+.dc-toolbar .btn {
+    margin-right: 0.5rem;
+}
+
+.dc-discipline-image {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.dc-status-published {
+    color: green;
+    font-weight: 600;
+}
+
+.dc-status-unpublished {
+    color: darkred;
+    font-weight: 600;
+}
+
+input[name="cid[]"],
+#checkAll {
+    transform: scale(2);
+    cursor: pointer;
+    margin: 6px;
+}
+
+.dc-row-clickable {
+    cursor: pointer !important;
+    transition: background-color 0.15s ease !important;
+}
+
+.dc-row-clickable:hover td {
+    background-color: #eef5ff !important;
+}

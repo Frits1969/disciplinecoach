@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ========================================================================
+    DisciplineCoach
+    Joomla 6 Component
+    ========================================================================
+
+    File        : discipline.xml
+    Path        : administrator/forms/discipline.xml
+    Purpose     : Defines the Discipline form structure.
+                  Used for creating and editing disciplines,
+                  including titles, aliases and images.
+
+    Author      : Frits van Leeuwen
+    Created     : 2026-11-05
+    Modified    : 2026-11-07
+    Version     : 0.1.2
+
+    Copyright   : Copyright (C) 2026 Frits van Leeuwen
+    License     : GNU General Public License version 2 or later
+
+    ========================================================================
+-->
+<form>
+
+    <fieldset name="basic">
+
+        <field name="title" type="text" label="Title" required="true" />
+
+        <field name="alias" type="text" label="Alias" required="true" />
+
+        <field name="image" type="media" label="Image" directory="disciplines" preview="true" />
+
+        <field name="published" type="radio" label="Published" default="1">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </field>
+
+    </fieldset>
+
+</form>

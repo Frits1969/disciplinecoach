@@ -6,14 +6,15 @@
  * ========================================================================
  *
  * File        : DisciplineCoachComponent.php
+ * Path        : administartor/src/Extension
  * Purpose     : Main component class.
  *               Connects DisciplineCoach with the Joomla application
  *               and provides component initialization.
  *
  * Author      : Frits van Leeuwen
  * Created     : 2026-10-28
- * Modified    : 2026-10-29
- * Version     : 0.1.0
+ * Modified    : 2026-10-31
+ * Version     : 0.1.2
  *
  * Copyright   : Copyright (C) 2026 Frits van Leeuwen
  * License     : GNU General Public License version 2 or later

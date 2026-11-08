@@ -6,12 +6,13 @@
  * ========================================================================
  *
  * File        : HtmlView.php
+ * Path        : administrator/src/View/Dashboard/HtmlView.php
  * Purpose     : Dashboard view for the admin side of the component.
  *
  * Author      : Frits van Leeuwen
  * Created     : 2026-10-29
- * Modified    : 2026-10-30
- * Version     : 0.1.1
+ * Modified    : 2026-10-31
+ * Version     : 0.1.2
  *
  * Copyright   : Copyright (C) 2026 Frits van Leeuwen
  * License     : GNU General Public License version 2 or later

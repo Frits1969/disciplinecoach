@@ -10,15 +10,15 @@
 
     Author      : Frits van Leeuwen
     Created     : 2026-10-28
-    Modified    : 2026-10-29
-    Version     : 0.1.0
+    Modified    : 2026-11-07
+    Version     : 0.1.2
 
     Copyright   : Copyright (C) 2026 Frits van Leeuwen
     License     : GNU General Public License version 2 or later
     ========================================================================
 -->
 
-<extension type="component" method="upgrade" version="6.0">
+<extension type="component" method="upgrade">
 
     <name>com_disciplinecoach</name>
 
@@ -27,9 +27,11 @@
     <copyright>Copyright (C) 2026 Frits van Leeuwen</copyright>
     <license>GNU General Public License version 2 or later</license>
 
-    <version>0.1.1</version>
+    <version>0.1.2</version>
 
     <description>DisciplineCoach Joomla Component</description>
+
+    <scriptfile>script.php</scriptfile>
 
     <namespace path="src">Fvl\Component\DisciplineCoach\Administrator</namespace>
 
@@ -40,16 +42,37 @@
         </menu>
 
         <files folder="administrator">
+            <folder>forms</folder>
             <folder>services</folder>
             <folder>src</folder>
             <folder>tmpl</folder>
+            <folder>sql</folder>
         </files>
 
     </administration>
 
+    <install>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install/mysql/install.sql</file>
+        </sql>
+    </install>
+
+    <uninstall>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/uninstall/mysql/uninstall.sql</file>
+        </sql>
+    </uninstall>
+
+    <update>
+        <schemas>
+            <schemapath type="mysql">sql/updates/mysql</schemapath>
+        </schemas>
+    </update>
+
     <media destination="com_disciplinecoach" folder="media/com_disciplinecoach">
         <folder>css</folder>
         <folder>images</folder>
+        <folder>js</folder>
     </media>
 
 </extension>

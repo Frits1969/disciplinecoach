@@ -6,6 +6,7 @@
  * ========================================================================
  *
  * File        : DisplayController.php
+ * Path        : administrator/src/Controller/DisciplinesController.php
  * Purpose     : Standaard controller voor de admin-kant van het component.
  *               Handelt het "display" task af en toont de standaard view.
  *
