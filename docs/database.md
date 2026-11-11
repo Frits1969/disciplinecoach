@@ -1,205 +1,293 @@
-# Database Design
+## Database Design
 
-## Current Status
+### Current Status
 
-The data model is currently under design.
+The Discipline database structure was implemented in version 0.1.3.
 
-## Design Principles
+The current schema separates shared discipline data from translated discipline content.
+
+Implemented tables:
+
+```text
+#__dc_disciplines
+#__dc_disciplines_lang
+```
+
+Joomla replaces `#__` with the database prefix configured for the website.
+
+Future tables for memberships, coaches, discipline requests and configuration have not yet been implemented.
+
+### Design Principles
 
 - Joomla manages users.
 - DisciplineCoach extends Joomla user functionality.
 - Users may belong to multiple disciplines.
 - Moderator permissions are discipline-specific.
-- Users manage their own discipline memberships.
-- Discipline creation is managed by a Super Administrator.
-- All editable entities should support auditing.
+- Shared data is not duplicated for each language.
+- Translated content is stored separately from shared content.
+- Joomla content language codes identify translations.
+- Editable entities support auditing where appropriate.
+- Relationships are protected by database constraints.
+- Duplicate translations are prevented by unique indexes.
+- Related translations are removed automatically.
 
-## Auditing
+### Naming Conventions
 
-All editable entities should contain the following audit fields:
+All DisciplineCoach tables use the Joomla database prefix placeholder `#__` and the component prefix `dc_`.
 
-- created
-- created_by
-- modified
-- modified_by
+### Auditing
 
-These fields provide information about:
+The discipline table contains:
 
-- When a record was created
-- Who created the record
-- When a record was last modified
-- Who performed the last modification
+- `created`
+- `created_by`
+- `modified`
+- `modified_by`
 
-This allows administrators to distinguish between actions performed by members, moderators, and administrators.
+Translation records currently do not contain separate audit fields because translations are saved as part of the discipline operation.
 
-## Planned Entities
+### Implemented Entities
 
-### Disciplines
+#### Disciplines
 
-A discipline represents a field of knowledge, expertise, activity, or interest within the system.
+Shared discipline data is stored in:
 
-Examples include:
+```text
+#__dc_disciplines
+```
 
-- Badminton
-- Football
-- Music
-- First Aid
-- Leadership
-- Languages
-- Project Management
+Fields:
 
-Properties may include:
+- `id`
+- `image`
+- `published`
+- `created`
+- `created_by`
+- `modified`
+- `modified_by`
 
-- Id
-- Name
-- Description
-- Logo
-- Image
-- Published State
+##### `id`
 
-Audit fields:
+`INT UNSIGNED`, primary key, auto increment and required.
 
-- Created
-- Created By
-- Modified
-- Modified By
+##### `image`
 
-### Users
+`VARCHAR(255)`, optional and shared by all translations.
 
-Users are managed by Joomla.
+##### `published`
 
-DisciplineCoach does not replace Joomla user management.
+`TINYINT(1)`, required, default `1`.
 
-User authentication, authorization, registration, password management, and account activation remain the responsibility of Joomla.
+```text
+0 = Unpublished
+1 = Published
+```
 
-DisciplineCoach extends Joomla users through memberships.
+##### `created`
 
-### Memberships
+`DATETIME`, required.
 
-A membership connects a user to a discipline.
+##### `created_by`
 
-Properties may include:
+`INT UNSIGNED`, required, default `0`.
 
-- Id
-- User
-- Discipline
-- Is Moderator
+##### `modified`
 
-A user may belong to multiple disciplines.
+`DATETIME`, optional.
 
-A discipline may contain multiple users.
+##### `modified_by`
 
-Examples:
+`INT UNSIGNED`, optional.
 
-User:
+##### Discipline Indexes
 
-- Badminton
-- Hockey
-- Volleyball
+- Primary key on `id`
+- Index on `published`
 
-Moderator privileges are assigned through memberships.
+#### Discipline Translations
 
-A user may be:
+Translated discipline data is stored in:
 
-- Moderator for Discipline A
-- Member for Discipline B
-- Moderator for Discipline C
+```text
+#__dc_disciplines_lang
+```
 
-Audit fields:
+Fields:
 
-- Created
-- Created By
-- Modified
-- Modified By
+- `id`
+- `discipline_id`
+- `language`
+- `title`
+- `alias`
 
-### Discipline Requests
+Each record contains the translated values for one discipline in one Joomla content language.
 
-Users may request new disciplines.
+##### `id`
 
-The Super Administrator reviews the request and decides whether the discipline should be added.
+`INT UNSIGNED`, primary key, auto increment and required.
 
-Properties may include:
+##### `discipline_id`
 
-- Id
-- Requested Name
-- Requested By
-- Status
-- Administrator Remarks
+`INT UNSIGNED`, required and a foreign key to `#__dc_disciplines.id`.
 
-Status values may include:
+##### `language`
 
-- Pending
-- Approved
-- Rejected
+`VARCHAR(7)`, required. Examples: `nl-NL`, `en-GB`, `de-DE`.
 
-Audit fields:
+##### `title`
 
-- Created
-- Created By
-- Modified
-- Modified By
+`VARCHAR(100)`, required. Contains the translated discipline name.
 
-### Moderators
+##### `alias`
 
-Moderator status is stored within the Membership entity.
+`VARCHAR(100)`, required. Contains the language-specific alias.
 
-A separate moderator table is therefore not required.
+##### Translation Indexes
 
-Moderator privileges are determined by the relationship between a user and a discipline.
+- Primary key on `id`
+- Unique index on `discipline_id` and `language`
+- Unique index on `alias` and `language`
+- Index on `discipline_id`
+- Index on `language`
+- Index on `title`
 
-### Content
+The unique discipline and language index prevents duplicate translations for the same language. The unique alias and language index prevents duplicate aliases within one language.
 
-Future content entities may include:
+### Discipline Relationship
 
-- Exercises
-- Training Plans
-- Documents
-- Images
-- Articles
-- Knowledge Assets
+```text
+#__dc_disciplines.id
+    ↓
+#__dc_disciplines_lang.discipline_id
+```
 
-Content management is not part of the initial version of DisciplineCoach.
+This is a one-to-many relationship. One discipline has one shared record and one or more translation records. One translation belongs to exactly one discipline and one content language.
 
-Content-related entities will be designed in a future phase.
+### Foreign Key
 
-## Terminology Configuration
+The translation table contains a foreign key from `#__dc_disciplines_lang.discipline_id` to `#__dc_disciplines.id` using:
 
-The component internally uses the term "Discipline".
+```text
+ON DELETE CASCADE
+ON UPDATE CASCADE
+```
 
-The displayed terminology can be configured by the administrator.
+### Example Data
 
-Examples include:
+Main discipline record:
 
-- Discipline
-- Sport
-- Musical Instrument
-- Subject
-- Domain
-- Specialization
-- Area of Expertise
-- Activity
+```text
+id:          1
+image:       images/disciplines/football.png
+published:   1
+created:     2026-11-10 10:00:00
+created_by:  42
+modified:    NULL
+modified_by: NULL
+```
 
-This configuration affects the user interface only and does not affect the database structure.
+Translation records:
 
-## Notes
+```text
+id:            1
+discipline_id: 1
+language:      nl-NL
+title:         Voetbal
+alias:         voetbal
+```
 
-The final database schema has not yet been defined.
+```text
+id:            2
+discipline_id: 1
+language:      en-GB
+title:         Football
+alias:         football
+```
 
-Table names, indexes, relationships, and constraints remain subject to review.
+### Installation
 
-The initial version focuses on:
+The complete database structure for a clean installation is defined in:
 
-- Discipline management
-- Membership management
-- Moderator assignments
-- Discipline requests
+```text
+administrator/sql/install/mysql/install.sql
+```
 
-The initial version does not include:
+The main table is created before the translation table because the translation table contains a foreign key to the main table.
 
-- Exercises
-- Training Plans
-- Documents
-- Images
-- Knowledge Asset Management
+### Uninstallation
 
-These features will be considered in future versions.
+The removal script is defined in:
+
+```text
+administrator/sql/uninstall/mysql/uninstall.sql
+```
+
+Tables are removed in this order:
+
+1. `#__dc_disciplines_lang`
+2. `#__dc_disciplines`
+
+### Database Updates
+
+Incremental update scripts are stored in:
+
+```text
+administrator/sql/updates/mysql
+```
+
+Future schema changes will use version-specific files such as `0.1.4.sql` and `0.1.5.sql`.
+
+### Save Process
+
+Saving a multilingual discipline uses one database transaction:
+
+1. Validate all required translations.
+2. Validate aliases within their languages.
+3. Start the transaction.
+4. Insert or update the shared discipline record.
+5. Determine the discipline ID.
+6. Insert or update each translation.
+7. Commit the transaction.
+
+If any operation fails, the transaction is rolled back and no partial records remain.
+
+### Planned Entities
+
+#### Users
+
+Users remain managed by Joomla. No separate DisciplineCoach user table is currently planned.
+
+#### Memberships
+
+A membership will connect a Joomla user to a discipline. Possible fields include `id`, `user_id`, `discipline_id`, `is_moderator`, publication and audit fields.
+
+#### Coaches
+
+Coach functionality is planned for version 0.1.5. The final schema will be decided during that phase.
+
+#### Moderators
+
+Moderator status is expected to be stored within a membership or discipline assignment.
+
+#### Discipline Requests
+
+A future request table may contain request name, requester, status, administrator remarks and audit fields.
+
+#### Content
+
+Future content entities may include exercises, training plans, documents, images, articles and knowledge assets.
+
+### Terminology Configuration
+
+The component internally uses “Discipline”. Future terminology settings may change the displayed label without changing the database structure.
+
+### Notes
+
+The current discipline schema is implemented with:
+
+```text
+#__dc_disciplines
+#__dc_disciplines_lang
+```
+
+Future entities will be documented when their schemas are designed and implemented.

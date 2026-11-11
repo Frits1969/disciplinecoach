@@ -4,16 +4,47 @@ All notable changes to this project will be documented in this file.
 
 The format is based on Keep a Changelog.
 
-## [0.1.3] - Planned
+### [0.1.3] - 2026-11-10
 
-### Planned
+#### Added
+- Dutch administrator language files
+- English administrator language files
+- Translatable dashboard texts
+- Translatable discipline overview
+- Translatable discipline form
+- Translatable buttons, labels, statuses and system messages
+- Multilingual discipline names
+- Multilingual discipline aliases
+- Language tabs in the discipline form
+- Simultaneous saving of all available discipline translations
+- Automatic selection of the active content language
+- Separate discipline translation table
+- Content language-aware discipline overview
+- Joomla form token validation
 
-- Joomla language file implementation
-- Administrator translations
-- Frontend translations
-- Multilingual discipline texts
-- Multilingual terminology configuration
-- Language-aware forms
+#### Changed
+- Moved discipline titles and aliases from the main discipline table to the translation table
+- Updated the discipline create and edit workflow for multilingual content
+- Updated discipline search and sorting for translated titles and aliases
+- Updated database installation and removal scripts
+- Updated administrator controllers, models, views and templates
+- Updated discipline overview styling
+- Increased the size of discipline selection checkboxes
+- Improved row hover and mouse pointer behaviour
+
+#### Database
+- Added `#__dc_disciplines_lang`
+- Linked translations to `#__dc_disciplines` through `discipline_id`
+- Added one translation record per available content language
+- Added cascading deletion of discipline translations
+- Added unique language and alias indexes
+
+#### Result
+
+The Discipline administration module now supports multilingual discipline
+names and aliases. Administrators can switch between all available content
+languages, enter every translation in one form and save all translations
+simultaneously.
 
 ## [0.1.2] - 2026-11-08
 

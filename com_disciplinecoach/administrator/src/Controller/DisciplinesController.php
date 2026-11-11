@@ -7,13 +7,12 @@
  *
  * File        : DisciplinesController.php
  * Path        : administrator/src/Controller/DisciplinesController.php
- * Purpose     : Controller for the Disciplines administration view.
- *               Handles requests related to discipline management.
+ * Purpose     : Handles overview actions for disciplines.
  *
  * Author      : Frits van Leeuwen
  * Created     : 2026-10-31
- * Modified    : 2026-10-31
- * Version     : 0.1.2
+ * Modified    : 2026-11-10
+ * Version     : 0.1.3
  *
  * Copyright   : Copyright (C) 2026 Frits van Leeuwen
  * License     : GNU General Public License version 2 or later
@@ -25,10 +24,16 @@ namespace Fvl\Component\DisciplineCoach\Administrator\Controller;
 
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\Controller\BaseController;
+use Joomla\CMS\Session\Session;
+use Joomla\Database\DatabaseInterface;
+use RuntimeException;
+use Throwable;
 
 /**
- * Disciplines Controller.
+ * Controller for the disciplines overview.
  */
 class DisciplinesController extends BaseController
 {
@@ -39,123 +44,208 @@ class DisciplinesController extends BaseController
      */
     protected $default_view = 'disciplines';
 
+    /**
+     * Deletes the selected disciplines.
+     *
+     * @return void
+     */
     public function delete(): void
     {
-        $ids = $_POST['cid'] ?? [];
+        $this->checkToken();
 
-        if (empty($ids))
-        {
-            $this->setRedirect(
-                'index.php?option=com_disciplinecoach&view=disciplines',
-                'Geen discipline geselecteerd.',
+        $ids = $this->getSelectedIds();
+
+        if (empty($ids)) {
+            $this->redirectWithMessage(
+                Text::_('COM_DISCIPLINECOACH_NO_DISCIPLINE_SELECTED'),
                 'warning'
             );
 
             return;
         }
 
-        $db = \Joomla\CMS\Factory::getDbo();
-
-        $ids = array_map('intval', $ids);
-
-        $query = $db->getQuery(true)
-            ->delete($db->quoteName('#__dc_disciplines'))
-            ->where(
-                $db->quoteName('id')
-                . ' IN ('
-                . implode(',', $ids)
-                . ')'
+        try {
+            $database = Factory::getContainer()->get(
+                DatabaseInterface::class
             );
 
-        $db->setQuery($query);
-        $db->execute();
+            $query = $database->createQuery()
+                ->delete(
+                    $database->quoteName('#__dc_disciplines')
+                )
+                ->where(
+                    $database->quoteName('id')
+                    . ' IN ('
+                    . implode(',', $ids)
+                    . ')'
+                );
 
-        $this->setRedirect(
-            'index.php?option=com_disciplinecoach&view=disciplines',
-            count($ids) . ' discipline(s) verwijderd.',
-            'message'
-        );
+            $database->setQuery($query);
+            $database->execute();
+
+            $this->redirectWithMessage(
+                Text::plural(
+                    'COM_DISCIPLINECOACH_DISCIPLINES_DELETED',
+                    count($ids)
+                ),
+                'message'
+            );
+        } catch (Throwable $exception) {
+            $this->redirectWithMessage(
+                Text::_('COM_DISCIPLINECOACH_ERROR_DELETE_FAILED'),
+                'error'
+            );
+        }
     }
 
+    /**
+     * Publishes the selected disciplines.
+     *
+     * @return void
+     */
     public function publish(): void
     {
-        $ids = $_POST['cid'] ?? [];
+        $this->changePublishedState(1);
+    }
 
-        if (empty($ids))
-        {
-            $this->setRedirect(
-                'index.php?option=com_disciplinecoach&view=disciplines',
-                'Geen discipline geselecteerd.',
+    /**
+     * Unpublishes the selected disciplines.
+     *
+     * @return void
+     */
+    public function unpublish(): void
+    {
+        $this->changePublishedState(0);
+    }
+
+    /**
+     * Changes the publication state of selected disciplines.
+     *
+     * @param int $published New publication state.
+     *
+     * @return void
+     */
+    private function changePublishedState(int $published): void
+    {
+        $this->checkToken();
+
+        $ids = $this->getSelectedIds();
+
+        if (empty($ids)) {
+            $this->redirectWithMessage(
+                Text::_('COM_DISCIPLINECOACH_NO_DISCIPLINE_SELECTED'),
                 'warning'
             );
 
             return;
         }
 
-        $db = \Joomla\CMS\Factory::getDbo();
-
-        $ids = array_map('intval', $ids);
-
-        $query = $db->getQuery(true)
-            ->update($db->quoteName('#__dc_disciplines'))
-            ->set(
-                $db->quoteName('published') . ' = 1'
-            )
-            ->where(
-                $db->quoteName('id')
-                . ' IN ('
-                . implode(',', $ids)
-                . ')'
+        try {
+            $database = Factory::getContainer()->get(
+                DatabaseInterface::class
             );
 
-        $db->setQuery($query);
-        $db->execute();
+            $query = $database->createQuery()
+                ->update(
+                    $database->quoteName('#__dc_disciplines')
+                )
+                ->set(
+                    $database->quoteName('published')
+                    . ' = '
+                    . $published
+                )
+                ->where(
+                    $database->quoteName('id')
+                    . ' IN ('
+                    . implode(',', $ids)
+                    . ')'
+                );
 
-        $this->setRedirect(
-            'index.php?option=com_disciplinecoach&view=disciplines',
-            count($ids) . ' discipline(s) gepubliceerd.',
-            'message'
+            $database->setQuery($query);
+            $database->execute();
+
+            $messageKey = $published === 1
+                ? 'COM_DISCIPLINECOACH_DISCIPLINES_PUBLISHED'
+                : 'COM_DISCIPLINECOACH_DISCIPLINES_UNPUBLISHED';
+
+            $this->redirectWithMessage(
+                Text::plural(
+                    $messageKey,
+                    count($ids)
+                ),
+                'message'
+            );
+        } catch (Throwable $exception) {
+            $this->redirectWithMessage(
+                Text::_('COM_DISCIPLINECOACH_ERROR_STATE_CHANGE_FAILED'),
+                'error'
+            );
+        }
+    }
+
+    /**
+     * Returns the selected discipline IDs.
+     *
+     * @return array
+     */
+    private function getSelectedIds(): array
+    {
+        $input = Factory::getApplication()->getInput();
+
+        $ids = $input->post->get(
+            'cid',
+            [],
+            'array'
+        );
+
+        $ids = array_map(
+            'intval',
+            $ids
+        );
+
+        $ids = array_filter(
+            $ids,
+            static function (int $id): bool {
+                return $id > 0;
+            }
+        );
+
+        return array_values(
+            array_unique($ids)
         );
     }
 
-    public function unpublish(): void
+    /**
+     * Checks the Joomla form token.
+     *
+     * @return void
+     */
+    private function checkToken(): void
     {
-        $ids = $_POST['cid'] ?? [];
-
-        if (empty($ids))
-        {
-            $this->setRedirect(
-                'index.php?option=com_disciplinecoach&view=disciplines',
-                'Geen discipline geselecteerd.',
-                'warning'
+        if (!Session::checkToken()) {
+            throw new RuntimeException(
+                Text::_('JINVALID_TOKEN_NOTICE')
             );
-
-            return;
         }
+    }
 
-        $db = \Joomla\CMS\Factory::getDbo();
-
-        $ids = array_map('intval', $ids);
-
-        $query = $db->getQuery(true)
-            ->update($db->quoteName('#__dc_disciplines'))
-            ->set(
-                $db->quoteName('published') . ' = 0'
-            )
-            ->where(
-                $db->quoteName('id')
-                . ' IN ('
-                . implode(',', $ids)
-                . ')'
-            );
-
-        $db->setQuery($query);
-        $db->execute();
-
+    /**
+     * Redirects to the disciplines overview.
+     *
+     * @param string $message     Message for the administrator.
+     * @param string $messageType Joomla message type.
+     *
+     * @return void
+     */
+    private function redirectWithMessage(
+        string $message,
+        string $messageType
+    ): void {
         $this->setRedirect(
-            'index.php?option=com_disciplinecoach&view=disciplines',
-            count($ids) . ' discipline(s) gedepubliceerd.',
-            'message'
+            'index.php?option=com_disciplinecoach'
+            . '&view=disciplines',
+            $message,
+            $messageType
         );
     }
 }

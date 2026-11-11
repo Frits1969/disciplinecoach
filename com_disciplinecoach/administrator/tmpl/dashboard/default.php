@@ -12,8 +12,8 @@
  *
  * Author      : Frits van Leeuwen
  * Created     : 2026-10-29
- * Modified    : 2026-10-31
- * Version     : 0.1.2
+ * Modified    : 2026-11-09
+ * Version     : 0.1.3
  *
  * Copyright   : Copyright (C) 2026 Frits van Leeuwen
  * License     : GNU General Public License version 2 or later
@@ -22,15 +22,20 @@
  */
 
 defined('_JEXEC') or die;
+
+use Joomla\CMS\Language\Text;
 ?>
 
 <div class="container-fluid">
 
     <div class="dc-dashboard-header">
-        <h1>DisciplineCoach</h1>
+        <h1>
+            <?php echo Text::_('COM_DISCIPLINECOACH_DASHBOARD'); ?>
+        </h1>
         <p>
-            Beheer disciplines, trainers, aanvragen en configuratie vanuit één centrale omgeving.
+            <?php echo Text::_('COM_DISCIPLINECOACH_DASHBOARD_DESCRIPTION'); ?>
         </p>
+
     </div>
 
     <div class="row">
@@ -45,11 +50,11 @@ defined('_JEXEC') or die;
                         </div>
 
                         <h3 class="dc-dashboard-title">
-                            Disciplines
+                            <?php echo Text::_('COM_DISCIPLINECOACH_DISCIPLINES'); ?>
                         </h3>
 
                         <p class="dc-dashboard-description">
-                            Beheer disciplines en discipline-afbeeldingen.
+                            <?php echo Text::_('COM_DISCIPLINECOACH_DISCIPLINES_DESC'); ?>
                         </p>
 
                     </div>
@@ -66,11 +71,11 @@ defined('_JEXEC') or die;
                     </div>
 
                     <h3 class="dc-dashboard-title">
-                        Coaches
+                        <?php echo Text::_('COM_DISCIPLINECOACH_COACHES'); ?>
                     </h3>
 
                     <p class="dc-dashboard-description">
-                        Beheer trainers, moderators en discipline-koppelingen.
+                        <?php echo Text::_('COM_DISCIPLINECOACH_COACHES_DESC'); ?>
                     </p>
 
                 </div>
@@ -86,11 +91,11 @@ defined('_JEXEC') or die;
                     </div>
 
                     <h3 class="dc-dashboard-title">
-                        Requests
+                        <?php echo Text::_('COM_DISCIPLINECOACH_REQUESTS'); ?>
                     </h3>
 
                     <p class="dc-dashboard-description">
-                        Verwerk aanvragen voor nieuwe disciplines.
+                        <?php echo Text::_('COM_DISCIPLINECOACH_REQUESTS_DESC'); ?>
                     </p>
 
                 </div>
@@ -106,11 +111,11 @@ defined('_JEXEC') or die;
                     </div>
 
                     <h3 class="dc-dashboard-title">
-                        Configuration
+                        <?php echo Text::_('COM_DISCIPLINECOACH_CONFIGURATION'); ?>
                     </h3>
 
                     <p class="dc-dashboard-description">
-                        Terminologie, talen en systeeminstellingen.
+                        <?php echo Text::_('COM_DISCIPLINECOACH_CONFIGURATION_DESC'); ?>
                     </p>
 
                 </div>

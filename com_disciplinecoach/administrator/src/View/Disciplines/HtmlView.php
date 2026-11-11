@@ -7,12 +7,14 @@
  *
  * File        : HtmlView.php
  * Path        : administrator/src/View/Disciplines/HtmlView.php
- * Purpose     : Displays the Disciplines administrator overview.
+ * Purpose     : Displays the administrator overview of disciplines.
+ *               Loads translated discipline titles and aliases through
+ *               the DisciplinesModel.
  *
  * Author      : Frits van Leeuwen
- * Created     : 2026-10-31
- * Modified    : 2026-11-08
- * Version     : 0.1.2
+ * Created     : 2026-11-10
+ * Modified    : 2026-11-10
+ * Version     : 0.1.3
  *
  * Copyright   : Copyright (C) 2026 Frits van Leeuwen
  * License     : GNU General Public License version 2 or later
@@ -26,21 +28,22 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
+use Joomla\CMS\Uri\Uri;
 
 /**
- * Disciplines HTML View.
+ * Disciplines administrator overview.
  */
 class HtmlView extends BaseHtmlView
 {
     /**
-     * Disciplines retrieved from the database.
+     * Disciplines displayed in the overview.
      *
      * @var array
      */
-    protected $items = [];
+    protected array $items = [];
 
     /**
-     * Displays the view.
+     * Displays the disciplines overview.
      *
      * @param string|null $tpl Optional template name.
      *
@@ -51,99 +54,11 @@ class HtmlView extends BaseHtmlView
         $document = Factory::getApplication()->getDocument();
 
         $document->addStyleSheet(
-            \Joomla\CMS\Uri\Uri::root()
-            . 'media/com_disciplinecoach/css/disciplines.css'
-        );
-        $wa = $document->getWebAssetManager();
-
-        $wa->registerAndUseScript(
-            'com_disciplinecoach.disciplines',
-            'media/com_disciplinecoach/js/disciplines.js'
+            Uri::root(true)
+            . '/media/com_disciplinecoach/css/disciplines.css'
         );
 
-        $db = Factory::getDbo();
-
-        $app = Factory::getApplication();
-
-        $order = $app->input->getCmd(
-            'order',
-            'title'
-        );
-
-        $search = trim(
-            $app->input->getString(
-                'search',
-                ''
-            )
-        );
-
-        $status = $app->input->getString(
-            'status',
-            ''
-        );
-
-        $direction = strtoupper(
-            $app->input->getCmd(
-                'direction',
-                'ASC'
-            )
-        );
-
-        $allowed = [
-            'title',
-            'alias',
-            'published'
-        ];
-
-        if (!in_array($order, $allowed))
-        {
-            $order = 'title';
-        }
-
-        if (!in_array($direction, ['ASC', 'DESC']))
-        {
-            $direction = 'ASC';
-        }
-
-        $query = $db->getQuery(true)
-            ->select('*')
-            ->from($db->quoteName('#__dc_disciplines'));
-
-        if ($search !== '')
-        {
-            $searchTerm = '%' . $search . '%';
-
-            $query->where(
-                '(' .
-                $db->quoteName('title')
-                . ' LIKE '
-                . $db->quote($searchTerm)
-                . ' OR ' .
-                $db->quoteName('alias')
-                . ' LIKE '
-                . $db->quote($searchTerm)
-                . ')'
-            );
-        }
-
-        if ($status !== '')
-        {
-            $query->where(
-                $db->quoteName('published')
-                . ' = '
-                . (int) $status
-            );
-        }
-
-        $query->order(
-            $db->quoteName($order)
-            . ' '
-            . $direction
-        );
-
-        $db->setQuery($query);
-
-        $this->items = $db->loadObjectList();
+        $this->items = $this->get('Items');
 
         parent::display($tpl);
     }

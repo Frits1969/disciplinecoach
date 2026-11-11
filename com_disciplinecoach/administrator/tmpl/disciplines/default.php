@@ -11,8 +11,8 @@
  *
  * Author      : Frits van Leeuwen
  * Created     : 2026-10-31
- * Modified    : 2026-11-05
- * Version     : 0.1.2
+ * Modified    : 2026-11-10
+ * Version     : 0.1.3
  *
  * Copyright   : Copyright (C) 2026 Frits van Leeuwen
  * License     : GNU General Public License version 2 or later
@@ -21,6 +21,9 @@
  */
 
 defined('_JEXEC') or die;
+
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Language\Text;
 ?>
 
 <form id="adminForm" action="index.php?option=com_disciplinecoach" method="post">
@@ -28,10 +31,10 @@ defined('_JEXEC') or die;
 
         <div class="dc-disciplines-header">
 
-            <h1>Disciplines</h1>
+            <h1><?php echo Text::_('COM_DISCIPLINECOACH_DISCIPLINES'); ?></h1>
 
             <p>
-                Manage disciplines and discipline images.
+                <?php echo Text::_('COM_DISCIPLINECOACH_DISCIPLINES_DESC'); ?>
             </p>
 
         </div>
@@ -39,14 +42,14 @@ defined('_JEXEC') or die;
         <div class="dc-toolbar mb-3">
 
             <a href="index.php?option=com_disciplinecoach&view=discipline" class="btn btn-success">
-                New Discipline
+                <?php echo Text::_('COM_DISCIPLINECOACH_NEW_DISCIPLINE'); ?>
             </a>
 
             <div class="btn-group">
 
                 <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
                     aria-expanded="false">
-                    Actions
+                    <?php echo Text::_('COM_DISCIPLINECOACH_ACTIONS'); ?>
                 </button>
 
                 <ul class="dropdown-menu">
@@ -57,7 +60,7 @@ defined('_JEXEC') or die;
         document.getElementById('adminForm').submit();
         return false;
     ">
-                            Publish Selected
+                            <?php echo Text::_('COM_DISCIPLINECOACH_PUBLISH_SELECTED'); ?>
                         </a>
                     </li>
 
@@ -67,7 +70,7 @@ defined('_JEXEC') or die;
         document.getElementById('adminForm').submit();
         return false;
     ">
-                            Unpublish Selected
+                            <?php echo Text::_('COM_DISCIPLINECOACH_UNPUBLISH_SELECTED'); ?>
                         </a>
                     </li>
 
@@ -77,7 +80,7 @@ defined('_JEXEC') or die;
                             document.getElementById('adminForm').submit();
                             return false;
                         ">
-                            Delete Selected
+                            <?php echo Text::_('COM_DISCIPLINECOACH_DELETE_SELECTED'); ?>
                         </a>
                     </li>
 
@@ -95,10 +98,10 @@ defined('_JEXEC') or die;
 
                     <input type="text" class="form-control" name="search"
                         value="<?php echo htmlspecialchars($_GET['search'] ?? ''); ?>"
-                        placeholder="Search disciplines...">
+                        placeholder="<?php echo Text::_('COM_DISCIPLINECOACH_SEARCH_DISCIPLINES'); ?>">
 
                     <button type="submit" class="btn btn-primary">
-                        Search
+                        <?php echo Text::_('COM_DISCIPLINECOACH_SEARCH'); ?>
                     </button>
 
                 </div>
@@ -110,15 +113,15 @@ defined('_JEXEC') or die;
                 <select class="form-select" name="status" onchange="this.form.submit();">
 
                     <option value="">
-                        All Statuses
+                        <?php echo Text::_('COM_DISCIPLINECOACH_ALL_STATUSES'); ?>
                     </option>
 
                     <option value="1" <?php echo (($_GET['status'] ?? '') === '1') ? 'selected' : ''; ?>>
-                        Published
+                        <?php echo Text::_('JPUBLISHED'); ?>
                     </option>
 
                     <option value="0" <?php echo (($_GET['status'] ?? '') === '0') ? 'selected' : ''; ?>>
-                        Unpublished
+                        <?php echo Text::_('JUNPUBLISHED'); ?>
                     </option>
 
                 </select>
@@ -138,17 +141,18 @@ defined('_JEXEC') or die;
                         <tr>
 
                             <th width="40">
-                                <input type="checkbox" id="checkAll" onclick="event.stopPropagation();">
+                                <input type="checkbox" id="checkAll" class="dc-discipline-checkbox"
+                                    onclick="event.stopPropagation();">
                             </th>
 
                             <th width="90">
-                                Image
+                                <?php echo Text::_('COM_DISCIPLINECOACH_IMAGE'); ?>
                             </th>
 
                             <th>
                                 <a
                                     href="index.php?option=com_disciplinecoach&view=disciplines&order=title&direction=ASC">
-                                    Discipline ▲
+                                    <?php echo Text::_('COM_DISCIPLINECOACH_DISCIPLINE'); ?> ▲
                                 </a>
 
                                 <a
@@ -160,7 +164,7 @@ defined('_JEXEC') or die;
                             <th>
                                 <a
                                     href="index.php?option=com_disciplinecoach&view=disciplines&order=alias&direction=ASC">
-                                    Alias ▲
+                                    <?php echo Text::_('COM_DISCIPLINECOACH_ALIAS'); ?> ▲
                                 </a>
 
                                 <a
@@ -173,7 +177,7 @@ defined('_JEXEC') or die;
                             <th>
                                 <a
                                     href="index.php?option=com_disciplinecoach&view=disciplines&order=published&direction=DESC">
-                                    Published ▲
+                                    <?php echo Text::_('COM_DISCIPLINECOACH_PUBLISHED'); ?> ▲
                                 </a>
 
                                 <a
@@ -193,7 +197,7 @@ defined('_JEXEC') or die;
                         <tr>
 
                             <td colspan="6">
-                                No disciplines found.
+                                <?php echo Text::_('COM_DISCIPLINECOACH_NO_DISCIPLINES_FOUND'); ?>
                             </td>
 
                         </tr>
@@ -203,11 +207,11 @@ defined('_JEXEC') or die;
                         <?php foreach ($this->items as $item) : ?>
 
                         <tr class="dc-row-clickable"
-                            onclick="window.location='index.php?option=com_disciplinecoach&view=discipline&id=<?php echo (int) $item->id; ?>';">
+                            onclick="window.location='index.php?option=com_disciplinecoach&view=discipline&id=<?php echo (int) $item->id; ?>&language=<?php echo rawurlencode((string) ($item->language ?? ''));  ?>';">
 
                             <td>
-                                <input type="checkbox" name="cid[]" value="<?php echo (int) $item->id; ?>"
-                                    onclick="event.stopPropagation();">
+                                <input type="checkbox" class="dc-discipline-checkbox" name="cid[]"
+                                    value="<?php echo (int) $item->id; ?>" onclick="event.stopPropagation();">
                             </td>
 
                             <td>
@@ -244,17 +248,13 @@ defined('_JEXEC') or die;
                             <td>
 
                                 <?php if ((int) $item->published === 1) : ?>
-
                                 <span class="dc-status-published">
-                                    Published
+                                    <?php echo Text::_('JPUBLISHED'); ?>
                                 </span>
-
                                 <?php else : ?>
-
                                 <span class="dc-status-unpublished">
-                                    Unpublished
+                                    <?php echo Text::_('JUNPUBLISHED'); ?>
                                 </span>
-
                                 <?php endif; ?>
 
                             </td>
@@ -274,6 +274,8 @@ defined('_JEXEC') or die;
         </div>
         <input type="hidden" name="task" value="">
         <input type="hidden" name="view" value="disciplines">
+
+        <?php echo HTMLHelper::_('form.token'); ?>
 </form>
 
 </div>

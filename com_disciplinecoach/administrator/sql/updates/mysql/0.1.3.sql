@@ -1,0 +1,24 @@
+--
+-- ========================================================================
+-- DisciplineCoach
+-- Joomla 6 Component
+-- ========================================================================
+--
+-- File        : 0.1.3.sql
+-- Path        : administrator/sql/updates/mysql/0.1.3.sql
+-- Purpose     : Registers database schema version 0.1.3.
+--
+--               Version 0.1.3 is installed as a clean installation.
+--               The complete database structure is created by install.sql.
+--               No migration from an earlier schema is required.
+--
+-- Author      : Frits van Leeuwen
+-- Created     : 2026-11-10
+-- Modified    : 2026-11-10
+-- Version     : 0.1.3
+--
+-- Copyright   : Copyright (C) 2026 Frits van Leeuwen
+-- License     : GNU General Public License version 2 or later
+--
+-- ========================================================================
+--

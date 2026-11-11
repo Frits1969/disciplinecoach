@@ -10,8 +10,8 @@
 
     Author      : Frits van Leeuwen
     Created     : 2026-10-28
-    Modified    : 2026-11-07
-    Version     : 0.1.2
+    Modified    : 2026-11-10
+    Version     : 0.1.3
 
     Copyright   : Copyright (C) 2026 Frits van Leeuwen
     License     : GNU General Public License version 2 or later
@@ -20,16 +20,16 @@
 
 <extension type="component" method="upgrade">
 
-    <name>com_disciplinecoach</name>
+    <name>COM_DISCIPLINECOACH</name>
 
     <author>Frits van Leeuwen</author>
     <creationDate>2026-10-28</creationDate>
     <copyright>Copyright (C) 2026 Frits van Leeuwen</copyright>
     <license>GNU General Public License version 2 or later</license>
 
-    <version>0.1.2</version>
+    <version>0.1.3</version>
 
-    <description>DisciplineCoach Joomla Component</description>
+    <description>COM_DISCIPLINECOACH_DESCRIPTION</description>
 
     <scriptfile>script.php</scriptfile>
 
@@ -38,7 +38,7 @@
     <administration>
 
         <menu link="index.php?option=com_disciplinecoach">
-            DisciplineCoach
+            COM_DISCIPLINECOACH
         </menu>
 
         <files folder="administrator">
@@ -47,6 +47,7 @@
             <folder>src</folder>
             <folder>tmpl</folder>
             <folder>sql</folder>
+            <folder>language</folder>
         </files>
 
     </administration>
