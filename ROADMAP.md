@@ -157,7 +157,7 @@ DisciplineCoach becomes fully multilingual and translation-ready for both admini
 
 ---
 
-## Phase 5 - Discipline Selection (Version 0.1.4)
+## Phase 5 - User Discipline Selection (Version 0.1.4)
 
 ### Frontend
 
