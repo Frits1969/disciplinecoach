@@ -1,8 +1,9 @@
 # DisciplineCoach Roadmap
 
-## Phase 1 - Foundation ✅ Completed
+## Phase 1 - Foundation ✅ Completed (Version 0.1.0)
 
 ### Documentation
+
 - GitHub repository created
 - Architecture defined
 - Database design documented
@@ -11,6 +12,7 @@
 - Project roadmap established
 
 ### Joomla 6 Foundation
+
 - Joomla component skeleton created
 - Installation manifest created
 - Service Provider implemented
@@ -23,23 +25,25 @@
 
 ### Result
 
-DisciplineCoach installs successfully and provides a working Joomla 6 administrator environment.
+DisciplineCoach installs successfully and provides a working Joomla administrator environment.
 
 ---
 
 ## Phase 2 - Dashboard ✅ Completed (Version 0.1.1)
 
 ### Dashboard
+
 - Dashboard CSS implemented
 - Dashboard icon support implemented
 - Dashboard graphics integrated
 - Dashboard tile navigation implemented
 
 ### Dashboard Modules
-- Disciplines tile
-- Coaches tile
-- Requests tile
-- Configuration tile
+
+- Disciplines
+- Coaches
+- Requests
+- Configuration
 
 ### Result
 
@@ -49,206 +53,175 @@ The dashboard serves as the central navigation hub of DisciplineCoach.
 
 ## Phase 3 - Discipline Management ✅ Completed (Version 0.1.2)
 
-### MVC Structure
-- Disciplines Controller implemented
-- Disciplines View implemented
-- Disciplines Template implemented
-
-### Database
-- Disciplines database table implemented
-- Installation SQL scripts implemented
-- Update SQL scripts implemented
-
 ### Administration
-- Disciplines overview implemented
-- Create discipline implemented
-- Edit discipline implemented
-- Delete discipline implemented
-- Bulk delete implemented
-- Publish discipline implemented
-- Unpublish discipline implemented
-- Bulk publish implemented
-- Bulk unpublish implemented
 
-### Search and Filtering
-- Search on title implemented
-- Search on alias implemented
-- Status filtering implemented
-- Sorting on title implemented
-- Sorting on alias implemented
-- Sorting on publication status implemented
-
-### Images
-- Joomla Media Manager integration implemented
-- Discipline image selection implemented
-- Discipline image storage implemented
-- Discipline thumbnails in overview implemented
-- Automatic image folder creation implemented
-
-### User Experience
-- Clickable discipline rows implemented
-- Select all / deselect all implemented
-- Improved discipline overview implemented
-- Hover effect implemented
-- Administrator styling improved
+- Discipline overview
+- Create discipline
+- Edit discipline
+- Delete discipline
+- Publish discipline
+- Unpublish discipline
+- Bulk operations
+- Search and filtering
+- Sorting
+- Image management
+- Media Manager integration
 
 ### Result
 
-The Discipline module is fully operational and suitable for production use.
+Administrators can fully manage disciplines.
 
 ---
 
-## Phase 4 - Multilingual Framework (Version 0.1.3)
+## Phase 4 - Multilingual Support ✅ Completed (Version 0.1.3)
 
-### Administrator Interface
+### Administrator
 
-#### Language Files
-- Create Dutch language files
-- Create English language files
-- Replace all hardcoded texts
-- Replace all hardcoded button labels
-- Replace all hardcoded status texts
-- Replace all hardcoded system messages
-- Replace all hardcoded headings
+- Dutch language support
+- English language support
+- Multilingual dashboard
+- Multilingual forms
+- Multilingual validation messages
 
-#### Forms
-- Translate form labels
-- Translate help texts
-- Translate validation messages
+### Disciplines
 
-#### Dashboard
-- Dashboard translations
-- Tile translations
-- Navigation translations
-
-### Frontend Content
-
-#### Multilingual Disciplines
 - Multilingual discipline names
-- Multilingual short descriptions
-- Multilingual long descriptions
-
-#### Translation Architecture
-- Define translation strategy
-- Implement language-aware models
-- Implement language-aware views
-- Implement language-aware controllers
-
-### Terminology
-
-#### Dynamic Terminology
-Allow administrators to configure terminology.
-
-Examples:
-
-- Discipline → Sport
-- Discipline → Musical Instrument
-- Discipline → Subject
-- Discipline → Domain
-
-- Coach → Trainer
-- Coach → Moderator
-- Coach → Teacher
-- Coach → Instructor
+- Multilingual aliases
+- Language-aware administration
+- Translation storage architecture
 
 ### Result
 
-DisciplineCoach becomes fully multilingual and translation-ready for both administrators and visitors.
+DisciplineCoach became fully multilingual.
 
 ---
 
-## Phase 5 - User Discipline Selection (Version 0.1.4)
+## Phase 5 - User Discipline Selection ✅ Completed (Version 0.1.4)
 
 ### Frontend
 
-Visitors will be able to browse and select disciplines.
-
-#### Discipline Overview
-- Public discipline overview
-- Discipline detail page
+- Frontend menu item support
+- Discipline overview
+- Discipline card layout
 - Discipline image display
-- Discipline descriptions
-- Search disciplines
-- Filter disciplines
+- Responsive frontend interface
 
-#### Selection Process
-- Visitors can select disciplines
-- Users can subscribe to disciplines
-- Users can remove discipline selections
-- Store discipline memberships
+### User Selection
 
-#### User Profile
-- Personal discipline overview
-- My disciplines page
-- Discipline management by users
+- Users can select disciplines
+- Users can deselect disciplines
+- User selections are stored
+- Previous selections are automatically restored
 
-#### Membership Management
-- Link users to disciplines
-- Store memberships
-- Manage memberships
-- Membership history
+### Language Support
+
+- Dutch frontend translations
+- English frontend translations
+
+### Database
+
+- User-discipline relationship storage
 
 ### Result
 
-Visitors become active participants by selecting and following disciplines.
+Authenticated users can select and manage their preferred disciplines from the frontend.
 
 ---
 
-## Phase 6 - Coach Management (Version 0.1.5)
+## Phase 6 - Membership Foundation (Version 0.1.5)
 
-### Coaches
-- Coach administration
-- Coach profile management
-- Moderator assignments
-- Coach discipline memberships
+### Membership Administration
+
+- Membership overview
+- Membership search
+- Membership filtering
+- Membership maintenance tools
+
+### Discipline Memberships
+
+- Display members per discipline
+- Display disciplines per member
+- Membership reporting
 
 ### Administration
-- Search coaches
-- Filter coaches
-- Sort coaches
-- Assign coaches to disciplines
-- Remove coaches from disciplines
-- Promote coach to moderator
-- Demote moderator to coach
+
+- Improved administrator workflows
+- Additional data validation
+- Improved usability
 
 ### Result
 
-Coaches can be managed independently of disciplines.
+Discipline membership administration becomes manageable and visible.
 
 ---
 
-## Phase 7 - Discipline Requests (Version 0.1.6)
+## Phase 7 - Moderator Management (Version 0.1.6)
+
+### Moderator Assignment
+
+- Assign moderator to discipline
+- Change moderator assignment
+- Remove moderator assignment
+
+### Administration
+
+- Moderator overview
+- Discipline overview per moderator
+- Moderator overview per discipline
+- Search moderators
+- Filter moderators
+
+### User Roles
+
+- Moderator role administration
+- Discipline responsibility management
+
+### Result
+
+Administrators can assign and manage moderators for disciplines.
+
+---
+
+## Phase 8 - Discipline Requests (Version 0.1.7)
 
 ### Request Workflow
+
 - Request new discipline
-- Discipline request administration
-- Approve requests
-- Reject requests
+- Submit request
+- Approve request
+- Reject request
 
 ### Administration
+
 - Request overview
 - Request processing
-- Audit trail
-- Notifications
+- Audit information
+- Status tracking
 
 ### Result
 
-Users can request new disciplines and administrators can process those requests.
+Users can request new disciplines and administrators can manage the approval process.
 
 ---
 
-## Phase 8 - Configuration (Version 0.1.7)
-
-### Languages
-- Language management
-- Translation management
-- Language fallback logic
+## Phase 9 - Configuration (Version 0.1.8)
 
 ### Settings
+
 - General configuration
-- Application settings
 - Permission settings
-- Terminology settings
+- Application settings
+
+### Terminology
+
+- Configurable terminology
+- Discipline naming configuration
+- Moderator naming configuration
+
+### Languages
+
+- Translation management
+- Language fallback handling
 
 ### Result
 
@@ -256,19 +229,21 @@ DisciplineCoach becomes highly configurable.
 
 ---
 
-## Phase 9 - User Experience (Version 0.1.8)
+## Phase 10 - User Experience (Version 0.1.9)
 
-### Frontend Features
-- User discipline overview
-- Membership overview
-- Coach overview
+### Frontend
+
+- My disciplines
+- My memberships
 - Moderator overview
+- Personal dashboard
 
 ### Dashboard
+
 - Statistics
-- Status information
-- Quick actions
 - Recent activity
+- Quick actions
+- Summary information
 
 ### Result
 
@@ -276,56 +251,66 @@ A complete end-user experience is available.
 
 ---
 
-## Phase 10 - Documentation (Version 0.1.9)
+## Phase 11 - Documentation (Version 1.0.0)
 
 ### User Documentation
+
 - Installation guide
 - Administrator guide
 - User guide
 
 ### Developer Documentation
+
 - Architecture guide
 - Database guide
-- Extension development guide
+- Extension guide
 - API documentation
 
 ### Result
 
-DisciplineCoach is fully documented.
+A production-ready and fully documented release.
 
 ---
 
-## Phase 11 - Future Extensions (Version 2.x)
+## Future Extensions (Version 2.x)
 
-### Optional Features
+### Community Features
+
+- Community management
+- Discussion forums
+- Messaging
+- Collaboration tools
+
+### Content
+
 - Documents
 - Images
 - Exercises
 - Training plans
 - Certifications
 - Events
-- Community features
-- Forums
-- Messaging
 
 ### Artificial Intelligence
 
 #### Image Generation
+
 - AI-generated discipline images
-- Consistent image style management
 - Automatic image suggestions
+- Consistent image styles
 
 #### Content Generation
+
 - AI-assisted descriptions
 - AI-assisted translations
 - AI-assisted moderation
 
 ### Integrations
-- Microsoft 365 integration
-- Teams integration
-- Planner integration
-- Outlook integration
+
+- Microsoft 365
+- Microsoft Teams
+- Microsoft Planner
+- Microsoft Outlook
 
 ### Result
 
-DisciplineCoach evolves into a complete collaboration and community platform.
+DisciplineCoach evolves into a complete discipline and community management platform.

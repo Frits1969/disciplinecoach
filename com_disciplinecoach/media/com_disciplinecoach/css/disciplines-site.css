@@ -1,0 +1,231 @@
+/**
+ * ========================================================================
+ * DisciplineCoach
+ * Joomla 6 Component
+ * ========================================================================
+ *
+ * File        : disciplines-site.css
+ * Path        : media/com_disciplinecoach/css/disciplines-site.css
+ * Purpose     : Styles the frontend discipline selection page, including
+ *               discipline cards, images, checkboxes and selection states.
+ *
+ * Author      : Frits van Leeuwen
+ * Created     : 2026-11-14
+ * Modified    : 2026-11-16
+ * Version     : 0.1.4
+ *
+ * Copyright   : Copyright (C) 2026 Frits van Leeuwen
+ * License     : GNU General Public License version 2 or later
+ *
+ * ========================================================================
+ */
+
+.dc-selection-page {
+    max-width: 100%;
+}
+
+.dc-selection-header {
+    margin-bottom: 1.25rem;
+}
+
+.dc-selection-introduction {
+    margin-bottom: 0;
+}
+
+.dc-discipline-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 200px);
+    gap: 1.25rem;
+    align-items: start;
+    margin: 1.5rem 0;
+}
+
+.dc-discipline-card {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    min-height: 280px;
+    overflow: hidden;
+    border: 2px solid #c9cdd3;
+    border-radius: 0.75rem;
+    background: #ffffff;
+    color: inherit;
+    cursor: pointer;
+    box-shadow: 0 0.2rem 0.55rem rgb(0 0 0 / 8%);
+    transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.dc-discipline-image-wrapper {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 196px;
+    height: 196px;
+    padding: 4px;
+    overflow: hidden;
+    background: linear-gradient(
+        180deg,
+        #f7f9fb 0%,
+        #eef2f5 100%
+    );
+    border-bottom: 1px solid #dde2e7;
+}
+
+.dc-discipline-image {
+    display: block;
+    width: 188px;
+    height: 188px;
+    max-width: 188px;
+    max-height: 188px;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 0.45rem;
+    transition:
+        filter 0.2s ease,
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+.dc-discipline-image-placeholder {
+    display: block;
+    width: 188px;
+    height: 188px;
+    border-radius: 0.45rem;
+    background: #e8ecef;
+}
+
+.dc-discipline-card-footer {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 80px;
+    padding: 0.8rem 0.75rem;
+    gap: 0.7rem;
+    background: #ffffff;
+}
+
+.dc-discipline-checkbox {
+    flex: 0 0 auto;
+    width: 2rem;
+    height: 2rem;
+    margin: 0;
+    cursor: pointer;
+    accent-color: #198754;
+}
+
+.dc-discipline-name {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #1f2933;
+}
+
+.dc-discipline-card.dc-is-selected {
+    border-color: #198754;
+    background: #f1fbf5;
+    box-shadow: 0 0.4rem 1rem rgb(25 135 84 / 20%);
+}
+
+.dc-discipline-card.dc-is-selected .dc-discipline-card-footer {
+    background: #f1fbf5;
+}
+
+.dc-discipline-card.dc-is-selected .dc-discipline-image {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+.dc-discipline-card.dc-is-unselected {
+    border-color: #c9cdd3;
+    background: #ffffff;
+    box-shadow: 0 0.2rem 0.55rem rgb(0 0 0 / 8%);
+}
+
+.dc-discipline-card.dc-is-unselected .dc-discipline-image {
+    filter: grayscale(100%);
+    opacity: 0.62;
+}
+
+/* Use the actual checkbox state as the authoritative selection state. */
+.dc-discipline-card:has(.dc-discipline-checkbox:checked) {
+    border-color: #198754;
+    background: #f1fbf5;
+    box-shadow: 0 0.4rem 1rem rgb(25 135 84 / 20%);
+}
+
+.dc-discipline-card:has(.dc-discipline-checkbox:checked)
+.dc-discipline-card-footer {
+    background: #f1fbf5;
+}
+
+.dc-discipline-card:has(.dc-discipline-checkbox:checked)
+.dc-discipline-image {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+.dc-discipline-card:not(:has(.dc-discipline-checkbox:checked))
+.dc-discipline-image {
+    filter: grayscale(100%);
+    opacity: 0.62;
+}
+
+.dc-discipline-card:hover {
+    border-color: #0d6efd;
+    box-shadow: 0 0.45rem 1rem rgb(13 110 253 / 18%);
+    transform: translateY(-3px);
+}
+
+.dc-discipline-card:hover .dc-discipline-image {
+    transform: scale(1.02);
+}
+
+.dc-discipline-card:focus-within {
+    outline: 3px solid #0d6efd;
+    outline-offset: 3px;
+}
+
+.dc-discipline-card.dc-is-disabled {
+    cursor: default;
+}
+
+.dc-discipline-card.dc-is-disabled:hover {
+    border-color: #c9cdd3;
+    box-shadow: 0 0.2rem 0.55rem rgb(0 0 0 / 8%);
+    transform: none;
+}
+
+.dc-discipline-card.dc-is-disabled:hover .dc-discipline-image {
+    transform: none;
+}
+
+.dc-discipline-card.dc-is-disabled .dc-discipline-image {
+    filter: grayscale(70%);
+    opacity: 0.65;
+}
+
+.dc-selection-actions {
+    margin-top: 1.5rem;
+}
+
+.dc-login-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+@media (max-width: 575.98px) {
+    .dc-discipline-grid {
+        grid-template-columns: repeat(auto-fill, 200px);
+        gap: 1rem;
+    }
+}

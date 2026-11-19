@@ -1,12 +1,12 @@
-## Architecture
+# Architecture
 
-### Purpose
+## Purpose
 
-DisciplineCoach is a multilingual Joomla 6 component designed to manage disciplines, memberships, coaches, moderators and discipline-related communities.
+DisciplineCoach is a multilingual Joomla 6 component designed to manage disciplines, memberships, moderators and discipline-related communities.
 
 The component is intentionally independent of any specific subject area. It can be used for sports, education, hobbies, professional knowledge domains, communities and collaborative environments.
 
-### Design Principles
+## Design Principles
 
 - Generic and reusable
 - Multilingual by design
@@ -19,7 +19,7 @@ The component is intentionally independent of any specific subject area. It can 
 - Separation of shared and translated data
 - Joomla-native development where possible
 
-### Joomla Architecture
+## Joomla Architecture
 
 DisciplineCoach follows the native Joomla 6 component architecture.
 
@@ -40,7 +40,7 @@ The component uses:
 
 Custom functionality is added only where Joomla does not already provide the required behaviour.
 
-### Component Structure
+## Component Structure
 
 The component is divided into an administrator application and a site application.
 
@@ -60,20 +60,24 @@ com_disciplinecoach
 ├── media
 │   └── com_disciplinecoach
 │       ├── css
+│       ├── js
 │       └── images
 ├── site
+│   ├── src
+│   ├── tmpl
+│   └── language
 └── com_disciplinecoach.xml
 ```
 
 The administrator application contains the management interface.
 
-The site application will contain public and registered-user functionality in later versions.
+The site application contains frontend functionality for discipline selection and user-specific discipline preferences.
 
 Project documentation remains outside the Joomla installation package.
 
-### Core Concepts
+## Core Concepts
 
-#### Discipline
+### Discipline
 
 A discipline represents a field of interest, specialisation, expertise, knowledge domain, skill area, activity, community or subject area.
 
@@ -107,7 +111,7 @@ Translated data currently includes:
 - Title
 - Alias
 
-#### User
+### User
 
 Users are managed by Joomla.
 
@@ -115,77 +119,106 @@ DisciplineCoach extends Joomla users by linking users to disciplines and assigni
 
 DisciplineCoach does not replace Joomla authentication, registration, password management or account activation.
 
-#### Membership
+### Membership
 
 A membership defines the relationship between a Joomla user and a discipline.
 
-A user may have multiple memberships. A discipline may have multiple members.
+A user may have multiple memberships.
 
-Membership functionality is planned for a later version.
+A discipline may have multiple members.
 
-#### Coach
+Version 0.1.4 implements the first membership foundation through user discipline selections.
+
+Future versions will extend memberships with administration, reporting and moderator assignments.
+
+### Coach
 
 A coach is a Joomla user who is active within one or more disciplines.
 
-Coach functionality is planned for a later version.
+Coach management will be introduced in later versions.
 
-#### Moderator
+### Moderator
 
-A moderator is a coach or member with additional responsibilities within a specific discipline.
+A moderator is a Joomla user with additional responsibilities within a discipline.
 
-Moderator privileges are discipline-specific.
+Moderator permissions are discipline-specific.
 
-#### Content
+Moderators will be assigned by an administrator.
 
-Content belongs to a discipline. Future examples may include exercises, training plans, documents, images, articles and knowledge resources.
+Moderator administration is planned for version 0.1.6.
 
-Content management is not part of version 0.1.3.
+### Content
 
-### User Roles
+Content belongs to a discipline.
+
+Future examples may include:
+
+- Exercises
+- Training plans
+- Documents
+- Images
+- Articles
+- Knowledge resources
+
+## User Roles
 
 - Registered User
-- Member
+- Discipline Member
 - Coach
 - Moderator
 - Super Administrator
 
-The Super Administrator can currently manage disciplines. Additional management functionality will be introduced in later versions.
+The Super Administrator currently manages disciplines and system configuration.
 
-### Relationships
+Additional management functionality will be introduced in future releases.
 
-The planned user relationship is:
+## Relationships
+
+### User Membership Relationship
+
+```text
+Joomla User
+    ↓
+User Discipline Membership
+    ↓
+Discipline
+```
+
+A user can belong to multiple disciplines.
+
+A discipline can contain multiple users.
+
+### Moderator Relationship
 
 ```text
 Joomla User
     ↓
 Membership
     ↓
+Moderator Assignment
+    ↓
 Discipline
 ```
 
-Moderator privileges are linked to the membership:
+Moderator permissions are always discipline-specific.
 
-```text
-Membership
-    ↓
-Moderator privileges
-```
-
-The implemented discipline translation relationship is:
+### Translation Relationship
 
 ```text
 Discipline
     ↓
-Discipline translation
+Discipline Translation
     ↓
-Joomla content language
+Joomla Content Language
 ```
 
-One discipline can have multiple translations, but no more than one translation for the same content language.
+One discipline can have multiple translations.
 
-### Discipline Architecture
+There can be no more than one translation for the same language.
 
-Version 0.1.3 separates shared discipline information from translated discipline content.
+## Discipline Architecture
+
+Shared discipline information and translated discipline content are stored separately.
 
 Shared discipline data is stored in:
 
@@ -207,119 +240,156 @@ The tables are linked through:
 #__dc_disciplines_lang.discipline_id
 ```
 
-This structure prevents shared information such as the image and publication status from being duplicated for every language. It also allows an unlimited number of Joomla content languages without adding a separate database column for every language.
+This structure prevents duplicated data and supports an unlimited number of Joomla content languages.
 
-### Multilingual Architecture
+## Membership Architecture
+
+Version 0.1.4 introduced user discipline selections.
+
+Users can:
+
+- Select disciplines
+- Deselect disciplines
+- Save their preferences
+- Restore previously saved selections
+
+Membership data is stored separately from the discipline definition.
+
+This architecture supports future expansion with:
+
+- Member administration
+- Moderator assignments
+- Membership statuses
+- Membership auditing
+
+## Multilingual Architecture
 
 DisciplineCoach separates interface translations from content translations.
 
-#### Interface Translations
+### Interface Translations
 
-Administrator interface texts are stored in Joomla language files. The initial administrator interface languages are Dutch and English.
+Interface texts are stored in Joomla language files.
 
-Language files contain translations for dashboard texts, navigation, headings, buttons, form labels, status texts, validation messages and system messages.
+Languages currently supported:
 
-#### Content Translations
+- Dutch (nl-NL)
+- English (en-GB)
 
-Discipline titles and aliases are content and are therefore stored in the database.
+Language files contain:
 
-DisciplineCoach uses published Joomla content languages to determine which translations are required.
+- Headings
+- Labels
+- Buttons
+- Validation messages
+- Status texts
+- System messages
 
-Each discipline has one translation record per available content language.
+### Content Translations
+
+Discipline content is stored in the database.
+
+Current translated fields:
+
+- Title
+- Alias
+
+Each discipline contains one translation record per Joomla content language.
+
+Example:
 
 ```text
 Discipline ID 1
+
 ├── nl-NL: Voetbal
 ├── en-GB: Football
 └── de-DE: Fußball
 ```
 
-The language used by the Joomla administrator interface and the language of the content are separate concepts.
+The administrator language and content language remain separate concepts.
 
-### Multilingual Form Architecture
+## Frontend Architecture
 
-The discipline form displays all available Joomla content languages as tabs.
+The frontend currently focuses on discipline selection.
 
-For a new discipline:
+### Discipline Cards
 
-- The default website content language is active.
-- No empty language selection is displayed.
-- Every available language has its own title and alias fields.
+Disciplines are presented as visual cards consisting of:
 
-For an existing discipline:
+- Discipline image
+- Discipline title
 
-- The language passed from the overview is active.
-- Existing translations are loaded from the translation table.
-- Switching tabs displays the values entered for that language.
+### Selected State
 
-All language panels remain inside the same HTML form. Switching between languages only changes which panel is visible.
+Selected disciplines display:
 
-When the administrator selects Save and Close:
+- Full colour image
+- Highlighted border
+- Selected styling
 
-1. The shared discipline record is inserted or updated.
-2. The resulting discipline ID is determined.
-3. Every available translation is validated.
-4. Existing translations are updated.
-5. Missing translations are inserted.
-6. The complete operation is committed as one database transaction.
+### Unselected State
 
-If any part of the save operation fails, the transaction is rolled back.
+Unselected disciplines display:
 
-### Discipline Overview Architecture
+- Greyed image
+- Neutral border
 
-The administrator discipline overview combines the two discipline tables.
+### Persistence
 
-Shared fields are loaded from `#__dc_disciplines`. The displayed title and alias are loaded from `#__dc_disciplines_lang`.
+User selections are stored in the database and automatically restored when the user revisits the page.
 
-The overview supports searching and sorting translated titles and aliases, filtering by publication status, publishing and unpublishing disciplines, bulk actions and opening a discipline in the displayed language.
+## Security and Reliability
 
-### Discipline Image Architecture
+DisciplineCoach uses:
 
-The discipline image applies to the discipline as a whole and is stored once in the main discipline table.
-
-Joomla Media Manager is used to select and upload discipline images.
-
-Component media is stored below:
-
-```text
-media/com_disciplinecoach
-```
-
-### Deletion Behaviour
-
-Deleting a discipline removes the main discipline record. Associated translations are deleted automatically through the database foreign key with cascading deletion.
-
-### Security and Reliability
-
-The discipline management process uses:
-
-- Joomla input handling
+- Joomla input filtering
 - Joomla form tokens
+- Joomla MVC
 - Joomla database query builder
-- Prepared bindings where appropriate
-- Required-field validation
-- Alias validation per language
 - Database transactions
 - Foreign key constraints
-- Unique database indexes
+- Unique indexes
+- Required field validation
+- Joomla user authentication
 
-### Discipline Management
+Only authenticated users can save personal discipline selections.
 
-Administrators can currently create, edit, delete, publish, unpublish, search, filter and sort disciplines, select an image, enter a title and alias for every available content language and save all translations simultaneously.
+Users can only modify their own selections.
 
-### Terminology
+## Terminology
 
-The component internally uses the term “Discipline”. Administrators may eventually configure an alternative display label, such as Sport, Musical Instrument, Subject, Domain, Specialisation, Area of Expertise or Activity.
+The component internally uses the term "Discipline".
 
-Terminology configuration is planned for a later version.
+Future versions may allow administrators to configure alternative labels such as:
 
-### Future Expansion
+- Sport
+- Activity
+- Subject
+- Domain
+- Instrument
+- Area of Expertise
 
-The architecture is intended to support multiple disciplines per user, multiple coaches and moderators per discipline, descriptions, memberships, requests, workflows, notifications, frontend management, configurable terminology and language fallback behaviour.
+Terminology changes affect only the user interface and not the database structure.
 
-### Current Status
+## Future Expansion
 
-Version 0.1.3 completed the multilingual Discipline administration module.
+The architecture is designed to support:
+
+- Multiple disciplines per user
+- Membership administration
+- Moderator assignment per discipline
+- Multiple moderators per discipline
+- Discipline requests
+- Approval workflows
+- Notifications
+- Frontend management
+- Configurable terminology
+- Language fallback behaviour
+- Community features
+- Microsoft 365 integrations
+
+## Current Status
+
+### Version 0.1.4
 
 Implemented:
 
@@ -329,22 +399,26 @@ Implemented:
 - Discipline administration
 - Discipline image management
 - Publication management
-- Separate storage of shared and translated discipline data
 - Multilingual discipline titles and aliases
-- Language tabs
-- Simultaneous saving of all translations
-- Language-aware overview, searching and sorting
+- Language-aware administration
+- Frontend menu item support
+- Frontend discipline presentation
+- Discipline card interface
+- Discipline selection
+- Persistent user discipline selections
+- Restoration of previous selections
+- Dutch frontend language support
+- English frontend language support
+- Database-backed memberships
 - Joomla form token validation
 - Transactional discipline saving
 
 Not yet implemented:
 
-- Frontend discipline presentation
-- Discipline descriptions
-- Memberships
-- Coach management
-- Moderator assignments
+- Membership administration
+- Coach administration
+- Moderator assignment management
 - Discipline requests
-- Configurable terminology
+- Terminology configuration
 - Language fallback management
 - General component configuration

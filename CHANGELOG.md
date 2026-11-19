@@ -4,6 +4,40 @@ All notable changes to this project will be documented in this file.
 
 The format is based on Keep a Changelog.
 
+## [0.1.4] - 2026-11-19
+
+### Added
+- Frontend menu item support for DisciplineCoach
+- Frontend discipline selection view
+- User discipline preference storage
+- Loading and displaying previously selected disciplines
+- Discipline card image display
+- Dutch frontend language support
+- English frontend language support
+- Frontend language files
+- Frontend CSS styling
+
+### Changed
+- Redesigned discipline selection interface using discipline cards
+- Improved card sizing and responsiveness
+- Improved discipline image presentation
+- Improved selection visibility for chosen disciplines
+- Updated frontend routing and menu integration
+
+### Fixed
+- Component installation issues
+- Database update script execution
+- Frontend menu item routing
+- Frontend asset loading
+- Discipline selection persistence
+
+### Result
+
+Authenticated Joomla users can now open DisciplineCoach from a frontend
+menu item, view available disciplines, select their preferred disciplines
+and save their personal discipline preferences. Previously saved
+selections are automatically restored when revisiting the page.
+
 ### [0.1.3] - 2026-11-10
 
 #### Added

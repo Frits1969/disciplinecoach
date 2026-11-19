@@ -1,8 +1,8 @@
 # DisciplineCoach
 
-DisciplineCoach is a multilingual Joomla 6 component for managing disciplines, memberships, moderator assignments, and discipline-based communities.
+DisciplineCoach is a multilingual Joomla 6 component for managing disciplines, memberships, moderators and discipline-based communities.
 
-The component is designed as a flexible foundation for organisations, communities, training platforms, educational environments, and collaborative knowledge domains.
+The component is designed as a flexible foundation for organisations, communities, sports clubs, training platforms, educational environments and collaborative knowledge domains.
 
 ## Key Concepts
 
@@ -32,46 +32,66 @@ The component is designed as a flexible foundation for organisations, communitie
 
 ## Current Status
 
-### Version 0.1.2
+### Version 0.1.4
 
-The Discipline administration module is now fully operational.
+The component currently provides discipline management in the Joomla administrator interface and discipline selection in the Joomla frontend.
 
-Implemented:
+### Administrator Features
 
-- Discipline database table
-- Discipline create functionality
-- Discipline edit functionality
-- Discipline save functionality
-- Discipline delete functionality
-- Bulk delete functionality
-- Publish functionality
-- Unpublish functionality
-- Bulk publish functionality
-- Bulk unpublish functionality
-- Discipline search
-- Discipline status filtering
-- Discipline sorting
-- Clickable discipline rows
-- Discipline image support
-- Joomla Media Manager integration
-- Discipline image thumbnails
-- Administrator CSS integration
-- Select all / deselect all functionality
-
-The component can now:
-
-- Install successfully in Joomla 6
-- Display a working administrator dashboard
+- Discipline administration
 - Create disciplines
 - Edit disciplines
 - Delete disciplines
 - Publish disciplines
 - Unpublish disciplines
-- Search by title and alias
-- Filter by publication status
-- Sort by title, alias and status
+- Bulk publish
+- Bulk unpublish
+- Bulk delete
+- Search by title
+- Search by alias
+- Status filtering
+- Sorting by title
+- Sorting by alias
+- Sorting by publication status
+- Discipline image support
+- Joomla Media Manager integration
+- Multilingual discipline names
+- Multilingual discipline aliases
+- Language-aware administration
+
+### Frontend Features
+
+- Frontend menu item support
+- Discipline selection page
+- Discipline card view
+- Discipline images
+- Visual selection indication
+- User discipline preference storage
+- Automatic loading of previously selected preferences
+- Dutch language support
+- English language support
+- Responsive card layout
+
+### Supported Languages
+
+- Dutch (nl-NL)
+- English (en-GB)
+
+### Current Capabilities
+
+The component can now:
+
+- Install successfully in Joomla 6
+- Upgrade successfully between releases
+- Display a working administrator dashboard
+- Manage disciplines
 - Store discipline images
-- Display discipline thumbnails
+- Manage multilingual discipline content
+- Display disciplines in the frontend
+- Allow authenticated users to choose disciplines
+- Store selected disciplines
+- Restore previously selected disciplines
+- Operate in Dutch and English
 
 ## Dashboard Modules
 
@@ -84,31 +104,42 @@ The current dashboard contains the following modules:
 
 These modules form the primary navigation structure of the application.
 
-## Planned Features
+## Database
 
-### Version 0.1.3 - Multilingual Support
+Current tables include:
+
+- #__dc_disciplines
+- #__dc_disciplines_lang
+- #__dc_user_disciplines
+
+## Release Roadmap
+
+### Version 0.1.5
 
 Planned:
 
-- Joomla language file integration
-- Administrator interface translations
-- Frontend language support
-- Configurable discipline descriptions per language
-- Multilingual terminology management
-- Translation-ready forms
-- Translation-ready dashboard
+- Further frontend improvements
+- Membership administration foundation
+- Improved administrator workflows
+- Additional validation and usability improvements
 
-### Disciplines
+### Version 0.1.6
 
-- AI-generated discipline imagery
-- Image management improvements
-- Advanced filtering
-- Pagination
+Planned:
+
+- Moderator administration
+- Assign a moderator to a discipline
+- Change moderator assignments
+- Remove moderator assignments
+- Moderator overview per discipline
+- Discipline overview per moderator
+
+## Future Development
 
 ### Coaches
 
 - Coach management
-- Moderator assignments
+- Coach profiles
 - Discipline memberships
 - Search, filtering and sorting
 
@@ -124,6 +155,13 @@ Planned:
 - Language settings
 - System settings
 
+### Disciplines
+
+- AI-generated discipline imagery
+- Advanced filtering
+- Pagination
+- Extended metadata
+
 ## Requirements
 
 - Joomla 6.x
@@ -132,7 +170,6 @@ Planned:
 ## Repository Structure
 
 disciplinecoach
-
 ├── docs
 ├── CHANGELOG.md
 ├── LICENSE

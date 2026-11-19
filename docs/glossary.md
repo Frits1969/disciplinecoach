@@ -1,43 +1,65 @@
-## Glossary
+# Glossary
 
-### Discipline
+## Discipline
 
 A discipline represents a domain, specialisation, field of interest, area of expertise, activity, community or subject area.
 
-Examples include Badminton, Football, Music, First Aid, Leadership, Languages and Project Management.
+Examples include:
 
-A discipline is the central organising concept within DisciplineCoach and contains shared data plus translated content.
+- Badminton
+- Football
+- Music
+- First Aid
+- Leadership
+- Languages
+- Project Management
 
-### Discipline ID
+A discipline is the central organising concept within DisciplineCoach.
 
-The unique numerical identifier stored in `#__dc_disciplines.id`.
+A discipline contains shared data and translated data.
 
-Translations refer to it through `#__dc_disciplines_lang.discipline_id`.
+---
 
-### Shared Discipline Data
+## Discipline ID
 
-Data that applies to the discipline in every language.
+The unique identifier of a discipline.
+
+Stored in:
+
+```text
+#__dc_disciplines.id
+```
+
+Every discipline translation and membership ultimately refers to a discipline ID.
+
+---
+
+## Shared Discipline Data
+
+Data that applies to all translations of a discipline.
 
 Current shared fields:
 
 - Image
-- Publication status
+- Publication state
 - Creation information
 - Modification information
 
-Stored once in:
+Stored in:
 
 ```text
 #__dc_disciplines
 ```
 
-### Discipline Translation
+---
 
-The language-specific values of a discipline.
+## Discipline Translation
 
-Currently translated fields:
+Language-specific values belonging to a discipline.
 
-- Discipline title
+Current translated fields:
+
+- Title
 - Alias
 
 Stored in:
@@ -46,57 +68,104 @@ Stored in:
 #__dc_disciplines_lang
 ```
 
-Each translation belongs to one discipline, uses one Joomla content language and has a title and alias.
+Each translation belongs to exactly one discipline and one Joomla content language.
 
-### Translation Table
+---
 
-A database table containing language-specific discipline values.
+## Translation Table
 
-The DisciplineCoach translation table is `#__dc_disciplines_lang` and is linked to the main discipline through `discipline_id`.
+A database table containing language-dependent information.
 
-### Translation ID
+Current DisciplineCoach translation table:
 
-The unique numerical identifier of a translation record. It identifies the translation, not the shared discipline.
+```text
+#__dc_disciplines_lang
+```
 
-### Language Code
+---
 
-A code identifying a Joomla content language, such as `nl-NL`, `en-GB` or `de-DE`.
+## Translation ID
 
-### Content Language
+The unique identifier of a translation record.
 
-A Joomla language used to identify translated website content.
+Stored in:
 
-DisciplineCoach uses published Joomla content languages to determine which discipline translations are required.
+```text
+#__dc_disciplines_lang.id
+```
 
-A content language is separate from the administrator interface language.
+A translation ID identifies a translation record, not a discipline.
 
-### Interface Language
+---
 
-The language used to display Joomla and component interface text, including buttons, labels, headings, statuses, validation messages and system messages.
+## Language Code
 
-Interface translations are stored in Joomla `.ini` files.
+A Joomla content language code.
 
-### Default Site Language
+Examples:
 
-The primary language configured for the public Joomla website.
+```text
+nl-NL
+en-GB
+de-DE
+```
 
-For a new discipline, DisciplineCoach uses this language as the initial active language when it is available as a published content language.
+---
 
-### Active Language
+## Content Language
 
-The content language whose form panel is currently visible.
+A Joomla language used for multilingual website content.
 
-Switching the active language changes the visible panel without discarding values in other panels.
+DisciplineCoach uses published Joomla content languages to determine required discipline translations.
 
-### Language Tab
+A content language is different from the administrator interface language.
 
-A button in the multilingual discipline form that activates the fields for one content language.
+---
 
-Each tab provides access to that language’s title and alias fields.
+## Interface Language
 
-### Title
+The language used by Joomla and DisciplineCoach to display the user interface.
 
-The language-specific name of a discipline.
+Examples:
+
+- Buttons
+- Labels
+- Messages
+- Headings
+
+Interface translations are stored in language files.
+
+---
+
+## Default Site Language
+
+The primary language configured for the Joomla frontend.
+
+DisciplineCoach uses this language whenever a default language must be determined.
+
+---
+
+## Active Language
+
+The currently selected content language.
+
+The active language determines which translated discipline information is displayed or edited.
+
+---
+
+## Language Tab
+
+A tab shown in the multilingual discipline editor.
+
+Each tab displays the discipline fields for one content language.
+
+---
+
+## Title
+
+The translated name of a discipline.
+
+Examples:
 
 ```text
 nl-NL: Voetbal
@@ -104,9 +173,13 @@ en-GB: Football
 de-DE: Fußball
 ```
 
-### Alias
+---
 
-A language-specific, URL-friendly value associated with a discipline title.
+## Alias
+
+A language-specific URL-safe version of a title.
+
+Examples:
 
 ```text
 nl-NL: voetbal
@@ -114,102 +187,298 @@ en-GB: football
 de-DE: fussball
 ```
 
-An alias must be unique within its content language.
+Aliases must be unique within the same language.
 
-### Publication State
+---
 
-A shared value indicating whether a discipline is published.
+## Publication State
+
+Indicates whether a discipline is available for use.
+
+Values:
 
 ```text
 0 = Unpublished
 1 = Published
 ```
 
-### Discipline Image
+---
 
-An image associated with the complete discipline and shared by all translations.
+## Discipline Image
+
+An image associated with a discipline.
+
+The image is shared by all language translations.
 
 Images are selected through Joomla Media Manager.
 
-### User
+---
 
-A registered Joomla user. DisciplineCoach extends Joomla users but does not replace Joomla user management.
+## User
 
-### Membership
+A Joomla user.
+
+DisciplineCoach uses Joomla user accounts and does not replace Joomla user management.
+
+Joomla remains responsible for:
+
+- Login
+- Logout
+- Registration
+- Password management
+- User profiles
+
+---
+
+## Membership
 
 The relationship between a Joomla user and a discipline.
 
-A user may have multiple memberships and a discipline may have multiple members.
+A membership indicates that a user has selected or joined a discipline.
 
-Membership functionality is planned for a later version.
+A user may belong to multiple disciplines.
 
-### Coach
+A discipline may contain multiple users.
 
-A Joomla user active within one or more disciplines.
+Memberships are stored in:
 
-Coach functionality is planned for a later version.
+```text
+#__dc_discipline_memberships
+```
 
-### Moderator
+---
 
-A user with additional responsibilities within a specific discipline.
+## Discipline Membership
+
+A single record connecting one Joomla user to one discipline.
+
+Examples:
+
+```text
+User → Football
+User → Badminton
+User → Leadership
+```
+
+A user may have multiple discipline memberships.
+
+---
+
+## Membership Table
+
+The database table used to store discipline selections.
+
+Current table:
+
+```text
+#__dc_discipline_memberships
+```
+
+The combination of:
+
+```text
+user_id + discipline_id
+```
+
+must be unique.
+
+---
+
+## Discipline Selection
+
+The process by which an authenticated user selects one or more disciplines in the frontend.
+
+Selections are stored permanently and automatically restored.
+
+---
+
+## Discipline Card
+
+A visual representation of a discipline.
+
+A discipline card currently contains:
+
+- Discipline image
+- Discipline title
+
+The entire card acts as a selection control.
+
+---
+
+## Selected Discipline
+
+A discipline currently chosen by a user.
+
+Selected disciplines use a highlighted visual appearance.
+
+---
+
+## Unselected Discipline
+
+A discipline not currently chosen by a user.
+
+Unselected disciplines use a neutral visual appearance.
+
+---
+
+## Coach
+
+A Joomla user who actively participates within one or more disciplines.
+
+Coach administration is planned for future versions.
+
+---
+
+## Moderator
+
+A Joomla user with additional responsibilities within a specific discipline.
 
 Moderator privileges are discipline-specific.
 
-### Super Administrator
+A moderator remains a normal discipline member with additional permissions.
 
-A Joomla Super Administrator with full administrative privileges.
+Moderator management is planned for version 0.1.6.
 
-The Super Administrator can currently manage disciplines.
+---
 
-### Discipline Request
+## Super Administrator
 
-A future request submitted when a required discipline is not available.
+A Joomla Super Administrator.
+
+A Super Administrator can currently:
+
+- Manage disciplines
+- Manage translations
+- Manage memberships through administration functions as they become available
+
+---
+
+## Discipline Request
+
+A future request submitted by a user when a required discipline does not exist.
 
 A Super Administrator will review the request and decide whether the discipline should be created.
 
-### Content
+---
 
-Information belonging to a discipline, such as exercises, training plans, documents, images, articles or knowledge resources.
+## Content
 
-Content management is not part of version 0.1.3.
+Information belonging to a discipline.
 
-### Terminology
+Future examples:
 
-The words presented to users to describe concepts in the component.
+- Exercises
+- Documents
+- Articles
+- Training plans
+- Certifications
+- Knowledge resources
 
-DisciplineCoach internally uses “Discipline”, while future configuration may display an alternative such as Sport, Subject or Domain.
+---
 
-### Database Transaction
+## Terminology
 
-A group of database operations that succeeds or fails as one operation.
+The words displayed to users that describe component concepts.
 
-DisciplineCoach uses a transaction when saving a discipline and its translations.
+The component currently uses:
 
-### Foreign Key
+- Discipline
+- Membership
+- Coach
+- Moderator
 
-A database constraint connecting a record in one table to a related record in another table.
+Future versions may allow administrators to replace these labels.
 
-The translation table connects `discipline_id` to the main discipline ID.
+Examples:
 
-### Cascading Deletion
+```text
+Discipline → Sport
+Discipline → Subject
+Discipline → Domain
 
-Database behaviour that automatically removes child records when the parent record is deleted.
+Coach → Trainer
+Coach → Instructor
+Coach → Teacher
+```
 
-Deleting a discipline automatically removes its translations.
+---
 
-### Form Token
+## Database Transaction
 
-A Joomla security value added to a form and checked when an administrator submits create, edit, publish, unpublish or delete actions.
+A database operation that either succeeds completely or fails completely.
 
-### Administrator Dashboard
+DisciplineCoach uses transactions when saving multilingual discipline information.
 
-The central navigation page of the DisciplineCoach administrator interface.
+---
 
-Current tiles:
+## Foreign Key
+
+A database constraint connecting records in different tables.
+
+Examples:
+
+```text
+#__dc_disciplines_lang.discipline_id
+    ↓
+#__dc_disciplines.id
+```
+
+and
+
+```text
+#__dc_discipline_memberships.discipline_id
+    ↓
+#__dc_disciplines.id
+```
+
+---
+
+## Cascading Deletion
+
+Database behaviour that automatically removes dependent records.
+
+Examples:
+
+Deleting a discipline automatically removes:
+
+- Discipline translations
+- Discipline memberships
+
+---
+
+## Form Token
+
+A Joomla security token used to verify form submissions.
+
+Form tokens help prevent CSRF attacks.
+
+---
+
+## Administrator Dashboard
+
+The central navigation page of DisciplineCoach.
+
+Current dashboard modules:
 
 - Disciplines
 - Coaches
 - Requests
 - Configuration
 
-Only the Disciplines module is fully operational in version 0.1.3.
+The dashboard serves as the primary navigation hub for administrators.
+
+---
+
+## Frontend
+
+The public Joomla site.
+
+Version 0.1.4 introduces frontend discipline selection for authenticated users.
+
+---
+
+## Backend
+
+The Joomla administrator environment.
+
+The backend contains administrative functionality for managing disciplines and future component administration.

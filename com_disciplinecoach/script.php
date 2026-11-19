@@ -13,8 +13,8 @@
  *
  * Author      : Frits van Leeuwen
  * Created     : 2026-11-07
- * Modified    : 2026-11-08
- * Version     : 0.1.2
+ * Modified    : 2026-11-11
+ * Version     : 0.1.4
  *
  * Copyright   : Copyright (C) 2026 Frits van Leeuwen
  * License     : GNU General Public License version 2 or later

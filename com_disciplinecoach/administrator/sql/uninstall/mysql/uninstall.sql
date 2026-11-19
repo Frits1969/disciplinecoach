@@ -11,8 +11,8 @@
 --
 -- Author      : Frits van Leeuwen
 -- Created     : 2026-11-01
--- Modified    : 2026-11-10
--- Version     : 0.1.3
+-- Modified    : 2026-11-11
+-- Version     : 0.1.4
 --
 -- Copyright   : Copyright (C) 2026 Frits van Leeuwen
 -- License     : GNU General Public License version 2 or later
@@ -20,5 +20,6 @@
 -- ========================================================================
 --
 
+DROP TABLE IF EXISTS `#__dc_discipline_memberships`;
 DROP TABLE IF EXISTS `#__dc_disciplines_lang`;
 DROP TABLE IF EXISTS `#__dc_disciplines`;

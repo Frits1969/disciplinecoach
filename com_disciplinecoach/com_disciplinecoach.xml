@@ -4,39 +4,43 @@
     DisciplineCoach
     Joomla 6 Component
     ========================================================================
-
     File        : com_disciplinecoach.xml
     Purpose     : Joomla component installation manifest.
-
     Author      : Frits van Leeuwen
     Created     : 2026-10-28
-    Modified    : 2026-11-10
-    Version     : 0.1.3
-
+    Modified    : 2026-11-11
+    Version     : 0.1.4
     Copyright   : Copyright (C) 2026 Frits van Leeuwen
     License     : GNU General Public License version 2 or later
     ========================================================================
 -->
-
 <extension type="component" method="upgrade">
 
     <name>COM_DISCIPLINECOACH</name>
-
     <author>Frits van Leeuwen</author>
     <creationDate>2026-10-28</creationDate>
-    <copyright>Copyright (C) 2026 Frits van Leeuwen</copyright>
-    <license>GNU General Public License version 2 or later</license>
-
-    <version>0.1.3</version>
-
+    <copyright>
+        Copyright (C) 2026 Frits van Leeuwen
+    </copyright>
+    <license>
+        GNU General Public License version 2 or later
+    </license>
+    <version>0.1.4</version>
     <description>COM_DISCIPLINECOACH_DESCRIPTION</description>
 
     <scriptfile>script.php</scriptfile>
 
-    <namespace path="src">Fvl\Component\DisciplineCoach\Administrator</namespace>
+    <namespace path="src">Fvl\Component\DisciplineCoach</namespace>
 
+    <!-- Frontend files -->
+    <files folder="site">
+        <folder>language</folder>
+        <folder>src</folder>
+        <folder>tmpl</folder>
+    </files>
+
+    <!-- Administrator files -->
     <administration>
-
         <menu link="index.php?option=com_disciplinecoach">
             COM_DISCIPLINECOACH
         </menu>
@@ -49,27 +53,30 @@
             <folder>sql</folder>
             <folder>language</folder>
         </files>
-
     </administration>
 
+    <!-- Database installation -->
     <install>
         <sql>
             <file driver="mysql" charset="utf8">sql/install/mysql/install.sql</file>
         </sql>
     </install>
 
+    <!-- Database removal -->
     <uninstall>
         <sql>
             <file driver="mysql" charset="utf8">sql/uninstall/mysql/uninstall.sql</file>
         </sql>
     </uninstall>
 
+    <!-- Database updates -->
     <update>
         <schemas>
             <schemapath type="mysql">sql/updates/mysql</schemapath>
         </schemas>
     </update>
 
+    <!-- Shared media files -->
     <media destination="com_disciplinecoach" folder="media/com_disciplinecoach">
         <folder>css</folder>
         <folder>images</folder>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ========================================================================
+    DisciplineCoach
+    Joomla 6 Component
+    ========================================================================
+
+    File        : default.xml
+    Path        : site/tmpl/disciplines/default.xml
+    Purpose     : Defines the Joomla frontend menu item type for the
+                  multilingual discipline selection page.
+
+    Author      : Frits van Leeuwen
+    Created     : 2026-11-14
+    Modified    : 2026-11-14
+    Version     : 0.1.4
+
+    Copyright   : Copyright (C) 2026 Frits van Leeuwen
+    License     : GNU General Public License version 2 or later
+
+    ========================================================================
+-->
+<metadata>
+    <layout title="COM_DISCIPLINECOACH_DISCIPLINES_MENU_TITLE">
+        <message>COM_DISCIPLINECOACH_DISCIPLINES_MENU_DESCRIPTION</message>
+    </layout>
+</metadata>
