@@ -44,31 +44,6 @@ Custom functionality is added only where Joomla does not already provide the req
 
 The component is divided into an administrator application and a site application.
 
-```text
-com_disciplinecoach
-├── administrator
-│   ├── forms
-│   ├── language
-│   ├── services
-│   ├── sql
-│   ├── src
-│   │   ├── Controller
-│   │   ├── Extension
-│   │   ├── Model
-│   │   └── View
-│   └── tmpl
-├── media
-│   └── com_disciplinecoach
-│       ├── css
-│       ├── js
-│       └── images
-├── site
-│   ├── src
-│   ├── tmpl
-│   └── language
-└── com_disciplinecoach.xml
-```
-
 The administrator application contains the management interface.
 
 The site application contains frontend functionality for discipline selection and user-specific discipline preferences.
@@ -143,9 +118,9 @@ A moderator is a Joomla user with additional responsibilities within a disciplin
 
 Moderator permissions are discipline-specific.
 
-Moderators will be assigned by an administrator.
+Moderators are assigned by an administrator.
 
-Moderator administration is planned for version 0.1.6.
+Moderator management was implemented in version 0.1.5 through the membership administration interface via the `is_moderator` attribute.
 
 ### Content
 
@@ -176,41 +151,15 @@ Additional management functionality will be introduced in future releases.
 
 ### User Membership Relationship
 
-```text
-Joomla User
-    ↓
-User Discipline Membership
-    ↓
-Discipline
-```
-
 A user can belong to multiple disciplines.
 
 A discipline can contain multiple users.
 
 ### Moderator Relationship
 
-```text
-Joomla User
-    ↓
-Membership
-    ↓
-Moderator Assignment
-    ↓
-Discipline
-```
-
 Moderator permissions are always discipline-specific.
 
 ### Translation Relationship
-
-```text
-Discipline
-    ↓
-Discipline Translation
-    ↓
-Joomla Content Language
-```
 
 One discipline can have multiple translations.
 
@@ -222,23 +171,9 @@ Shared discipline information and translated discipline content are stored separ
 
 Shared discipline data is stored in:
 
-```text
-#__dc_disciplines
-```
-
 Translated discipline data is stored in:
 
-```text
-#__dc_disciplines_lang
-```
-
 The tables are linked through:
-
-```text
-#__dc_disciplines.id
-    ↓
-#__dc_disciplines_lang.discipline_id
-```
 
 This structure prevents duplicated data and supports an unlimited number of Joomla content languages.
 
@@ -296,14 +231,6 @@ Current translated fields:
 Each discipline contains one translation record per Joomla content language.
 
 Example:
-
-```text
-Discipline ID 1
-
-├── nl-NL: Voetbal
-├── en-GB: Football
-└── de-DE: Fußball
-```
 
 The administrator language and content language remain separate concepts.
 
@@ -389,7 +316,7 @@ The architecture is designed to support:
 
 ## Current Status
 
-### Version 0.1.4
+### Version 0.1.5
 
 Implemented:
 
@@ -407,17 +334,20 @@ Implemented:
 - Discipline selection
 - Persistent user discipline selections
 - Restoration of previous selections
-- Dutch frontend language support
-- English frontend language support
+- Dutch and English language support
+- Administrator membership management (`view=memberships` & `view=membership`)
+- Native Joomla Table implementation (`MembershipTable`)
+- Moderator assignment flag per membership (`is_moderator`)
+- Clickable list rows with hover highlighting and checkbox event isolation
 - Database-backed memberships
 - Joomla form token validation
 - Transactional discipline saving
+- Resilient Joomla 6 installation script
 
 Not yet implemented:
 
-- Membership administration
-- Coach administration
-- Moderator assignment management
+- Coach administration / public profiles
+- Advanced moderator filtering and discipline overview per moderator
 - Discipline requests
 - Terminology configuration
 - Language fallback management

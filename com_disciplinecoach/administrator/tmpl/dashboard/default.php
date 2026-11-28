@@ -6,14 +6,14 @@
  * ========================================================================
  *
  * File        : default.php
- * Path        : administrator/tmpl/disciplines/default.php
+ * Path        : administrator/tmpl/dashboard/default.php
  * Purpose     : Administrator dashboard for DisciplineCoach.
  *               Provides navigation to the primary management modules.
  *
  * Author      : Frits van Leeuwen
  * Created     : 2026-10-29
- * Modified    : 2026-11-09
- * Version     : 0.1.3
+ * Modified    : 2026-11-21
+ * Version     : 0.1.5
  *
  * Copyright   : Copyright (C) 2026 Frits van Leeuwen
  * License     : GNU General Public License version 2 or later
@@ -63,23 +63,29 @@ use Joomla\CMS\Language\Text;
         </div>
 
         <div class="col-md-6 col-xl-3 mb-4">
-            <div class="card dc-dashboard-tile h-100">
-                <div class="card-body text-center">
+            <a href="index.php?option=com_disciplinecoach&view=memberships" class="text-decoration-none">
 
-                    <div class="dc-dashboard-icon">
-                        <img src="/media/com_disciplinecoach/images/coaches.png" alt="Coaches">
+                <div class="card dc-dashboard-tile h-100">
+
+                    <div class="card-body text-center">
+
+                        <div class="dc-dashboard-icon">
+                            <img src="/media/com_disciplinecoach/images/coaches.png" alt="Coaches">
+                        </div>
+
+                        <h3 class="dc-dashboard-title">
+                            <?php echo Text::_('COM_DISCIPLINECOACH_COACHES'); ?>
+                        </h3>
+
+                        <p class="dc-dashboard-description">
+                            <?php echo Text::_('COM_DISCIPLINECOACH_COACHES_DESC'); ?>
+                        </p>
+
                     </div>
 
-                    <h3 class="dc-dashboard-title">
-                        <?php echo Text::_('COM_DISCIPLINECOACH_COACHES'); ?>
-                    </h3>
-
-                    <p class="dc-dashboard-description">
-                        <?php echo Text::_('COM_DISCIPLINECOACH_COACHES_DESC'); ?>
-                    </p>
-
                 </div>
-            </div>
+
+            </a>
         </div>
 
         <div class="col-md-6 col-xl-3 mb-4">

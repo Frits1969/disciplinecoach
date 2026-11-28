@@ -11,8 +11,8 @@
  *
  * Author      : Frits van Leeuwen
  * Created     : 2026-10-29
- * Modified    : 2026-10-31
- * Version     : 0.1.2
+ * Modified    : 2026-11-25
+ * Version     : 0.1.5
  *
  * Copyright   : Copyright (C) 2026 Frits van Leeuwen
  * License     : GNU General Public License version 2 or later
@@ -26,12 +26,22 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
+use Joomla\CMS\Toolbar\ToolbarHelper;
+use Joomla\CMS\Language\Text;
 
 /**
  * Dashboard HTML View.
  */
 class HtmlView extends BaseHtmlView
 {
+    protected function addToolbar(): void
+    {
+        ToolbarHelper::title(
+            Text::_('COM_DISCIPLINECOACH_COMPONENT_TITLE'),
+            'users'
+        );
+    }
+
     /**
      * Displays the view.
      *
@@ -44,6 +54,8 @@ class HtmlView extends BaseHtmlView
         $document->addStyleSheet(
             '/media/com_disciplinecoach/css/dashboard.css'
         );
+
+        $this->addToolbar();
 
         parent::display($tpl);
     }

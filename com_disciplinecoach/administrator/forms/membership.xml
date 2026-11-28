@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ========================================================================
+DisciplineCoach
+Joomla 6 Component
+     ========================================================================
+
+File        : membership.xml
+Path        : administrator/forms/membership.xml
+Purpose     : Membership edit form.
+
+Author      : Frits van Leeuwen
+Created     : 2026-11-21
+Modified    : 2026-11-21
+Version     : 0.1.5
+
+Copyright   : Copyright (C) 2026 Frits van Leeuwen
+License     : GNU General Public License version 2 or later
+     ========================================================================
+-->
+
+<form>
+    <fieldset name="details" label="COM_DISCIPLINECOACH_MEMBERSHIP_DETAILS">
+
+        <field name="id" type="hidden" />
+
+        <field name="user_id" type="user" label="COM_DISCIPLINECOACH_TRAINER" description="COM_DISCIPLINECOACH_TRAINER_DESC" required="true" />
+
+        <field name="discipline_id" type="sql" label="COM_DISCIPLINECOACH_DISCIPLINE" description="COM_DISCIPLINECOACH_DISCIPLINE_DESC" required="true" query="
+                SELECT d.id AS value,
+                       dl.title AS text
+                FROM #__dc_disciplines d
+                INNER JOIN #__dc_disciplines_lang dl
+                    ON dl.discipline_id = d.id
+                WHERE dl.language = 'nl-NL'
+                ORDER BY dl.title ASC" key_field="value" value_field="text" />
+
+        <field name="is_moderator" type="radio" label="COM_DISCIPLINECOACH_MODERATOR" description="COM_DISCIPLINECOACH_MODERATOR_DESC" default="0">
+
+            <option value="0">
+                JNO
+            </option>
+
+            <option value="1">
+                JYES
+            </option>
+
+        </field>
+
+    </fieldset>
+</form>

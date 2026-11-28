@@ -2,8 +2,8 @@
 
 This document records the currently accepted architectural, functional and technical decisions for DisciplineCoach.
 
-Version: 0.1.4
-Date: 2026-11-19
+Version: 0.1.5
+Date: 2026-11-22
 
 ---
 
@@ -279,17 +279,7 @@ Example:
 
 Allowed:
 
-```text
-Football (en-GB)
-Voetbal (nl-NL)
-```
-
 Not allowed:
-
-```text
-Football
-Soccer
-```
 
 both within en-GB.
 
@@ -309,17 +299,7 @@ Examples:
 
 Allowed:
 
-```text
-football (en-GB)
-voetbal (nl-NL)
-```
-
 Not allowed:
-
-```text
-football
-football
-```
 
 inside en-GB.
 
@@ -339,19 +319,9 @@ Memberships are stored separately from disciplines.
 
 Implemented table:
 
-```text
-#__dc_discipline_memberships
-```
-
 Purpose:
 
 Connect
-
-```text
-Joomla User
-        ↔
-Discipline
-```
 
 Status:
 
@@ -364,10 +334,6 @@ Implemented in version 0.1.4
 ## Membership Uniqueness
 
 The combination
-
-```text
-user_id + discipline_id
-```
 
 must be unique.
 
@@ -399,6 +365,49 @@ Status:
 Accepted
 
 Implemented in version 0.1.4
+
+---
+
+## Moderator As Membership Attribute
+
+A moderator is not a distinct user account or standalone table entity. Moderator responsibilities extend a discipline membership.
+
+Implemented via:
+
+Values:
+
+- `0` = Standard discipline member
+- `1` = Discipline moderator
+
+Status:
+Accepted
+Implemented in version 0.1.5
+
+---
+
+## Native Joomla Table and AdminModel for Memberships
+
+The backend membership management interface follows standard Joomla 6 MVC architecture:
+
+- `MembershipTable` (`administrator/src/Table/MembershipTable.php`) handles data persistence and uniqueness validation.
+- `MembershipModel` extends `AdminModel` to leverage native Joomla save, apply, cancel, validation, and session state workflows.
+- `MembershipsController` extends `AdminController` to handle list actions such as bulk deletion.
+
+Status:
+Accepted
+Implemented in version 0.1.5
+
+---
+
+## Clickable Row Pattern with Checkbox Isolation
+
+Overview tables (Disciplines and Memberships) make entire table rows clickable (`.dc-row-clickable`) to navigate to the item's edit view.
+
+To allow users to select multiple items for bulk operations (e.g. deletion) without triggering row navigation, the checkbox cell isolates event propagation via `event.stopPropagation()`.
+
+Status:
+Accepted
+Implemented in version 0.1.5
 
 ---
 
@@ -579,7 +588,7 @@ Status:
 
 Accepted
 
-Planned for version 0.1.6
+Implemented in version 0.1.5
 
 ---
 
@@ -593,7 +602,7 @@ Status:
 
 Accepted
 
-Planned for version 0.1.6
+Implemented in version 0.1.5
 
 ---
 
@@ -612,7 +621,7 @@ Status:
 
 Accepted
 
-Planned for version 0.1.6
+Implemented in version 0.1.5
 
 ---
 
@@ -621,13 +630,6 @@ Planned for version 0.1.6
 ## Internal Terminology
 
 The system internally uses:
-
-```text
-Discipline
-Coach
-Moderator
-Membership
-```
 
 Status:
 
@@ -640,16 +642,6 @@ Accepted
 Future versions may allow administrators to replace labels.
 
 Examples:
-
-```text
-Discipline → Sport
-Discipline → Subject
-Discipline → Domain
-
-Coach → Trainer
-Coach → Teacher
-Coach → Instructor
-```
 
 Database structures remain unchanged.
 
@@ -682,7 +674,7 @@ Accepted
 
 # Current Release Status
 
-## Version 0.1.4
+## Version 0.1.5
 
 Implemented:
 
@@ -694,14 +686,16 @@ Implemented:
 - Frontend discipline selection
 - Discipline memberships
 - Membership persistence
-- Dutch translations
-- English translations
+- Administrator membership management (`view=memberships` & `view=membership`)
+- Moderator assignment flag per membership
+- Native Joomla Table (`MembershipTable`) & AdminModel integration
+- Clickable overview table rows with checkbox isolation
+- Dutch and English translations
 - Frontend card interface
 
 Planned:
 
-- Membership administration
-- Moderator assignment
+- Advanced moderator management & discipline overview per moderator
 - Discipline requests
 - Configuration management
 - Community functionality

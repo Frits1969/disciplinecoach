@@ -5,16 +5,16 @@
  * Joomla 6 Component
  * ========================================================================
  *
- * File        : default.php
- * Path        : administrator/tmpl/discipline/default.php
+ * File        : edit.php
+ * Path        : administrator/tmpl/discipline/edit.php
  * Purpose     : Displays the multilingual Discipline administrator form.
  *               Allows titles and aliases to be entered for every
  *               available content language.
  *
  * Author      : Frits van Leeuwen
  * Created     : 2026-11-03
- * Modified    : 2026-11-10
- * Version     : 0.1.3
+ * Modified    : 2026-11-27
+ * Version     : 0.1.5
  *
  * Copyright   : Copyright (C) 2026 Frits van Leeuwen
  * License     : GNU General Public License version 2 or later
@@ -39,7 +39,7 @@ $itemId = (int) ($this->item->id ?? 0);
         ?>
     </h1>
 
-    <form id="discipline-form" action="index.php?option=com_disciplinecoach&task=discipline.save" method="post">
+    <form id="adminForm" action="index.php?option=com_disciplinecoach" method="post">
         <input type="hidden" name="id" value="<?php echo $itemId; ?>">
 
         <input type="hidden" id="active-language" name="active_language" value="<?php
@@ -215,19 +215,7 @@ $itemId = (int) ($this->item->id ?? 0);
             <?php echo $this->form->renderField('published'); ?>
         </div>
 
-        <button type="submit" class="btn btn-success">
-            <?php
-            echo Text::_(
-                'COM_DISCIPLINECOACH_SAVE_AND_CLOSE'
-            );
-            ?>
-        </button>
-
-        <a href="index.php?option=com_disciplinecoach&view=disciplines" class="btn btn-secondary">
-            <?php echo Text::_('JCANCEL'); ?>
-        </a>
-
-        <input type="hidden" name="task" value="discipline.save">
+        <input type="hidden" name="task" value="">
 
         <?php echo HTMLHelper::_('form.token'); ?>
     </form>

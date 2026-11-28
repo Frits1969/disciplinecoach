@@ -128,61 +128,45 @@ Authenticated users can select and manage their preferred disciplines from the f
 
 ---
 
-## Phase 6 - Membership Foundation (Version 0.1.5)
+## Phase 6 - Membership & Moderator Foundation ✅ Completed (Version 0.1.5)
 
 ### Membership Administration
 
-- Membership overview
-- Membership search
-- Membership filtering
-- Membership maintenance tools
+- Membership overview (`view=memberships`)
+- Membership create and edit interface (`view=membership&layout=edit`)
+- Membership deletion and bulk deletion
+- Native Joomla MVC Table (`MembershipTable`) implementation
+- AdminModel integration with automatic data binding and validation
+- Form definition with user selection, discipline SQL dropdown and moderator toggle
+- Clickable overview table rows with hover highlighting (`#e7f1ff`) and pointer cursor
+- Checkbox event propagation isolation
 
-### Discipline Memberships
+### Moderator Management
 
-- Display members per discipline
-- Display disciplines per member
-- Membership reporting
+- Assign moderator responsibilities to discipline members
+- Update or revoke moderator status via the edit form
+- Visual moderator status indicators (✓ / ✕) in the overview table
+- Database storage via `is_moderator` column in `#__dc_discipline_memberships`
 
-### Administration
+### System & Installer
 
-- Improved administrator workflows
-- Additional data validation
-- Improved usability
+- Modernized `script.php` implementing `InstallerScriptInterface`
+- Native PHP filesystem operations replacing deprecated `Joomla\CMS\Filesystem\Folder` for Joomla 6
+- Exception handling in installer asset routines
+- Full Dutch (`nl-NL`) and English (`en-GB`) language support
 
-### Result
+### Database
 
-Discipline membership administration becomes manageable and visible.
-
----
-
-## Phase 7 - Moderator Management (Version 0.1.6)
-
-### Moderator Assignment
-
-- Assign moderator to discipline
-- Change moderator assignment
-- Remove moderator assignment
-
-### Administration
-
-- Moderator overview
-- Discipline overview per moderator
-- Moderator overview per discipline
-- Search moderators
-- Filter moderators
-
-### User Roles
-
-- Moderator role administration
-- Discipline responsibility management
+- Added `is_moderator` column to `#__dc_discipline_memberships`
+- Created schema update script `0.1.5.sql`
 
 ### Result
 
-Administrators can assign and manage moderators for disciplines.
+Administrators can fully manage trainer-discipline memberships and designate moderators with a refined, clickable user interface.
 
 ---
 
-## Phase 8 - Discipline Requests (Version 0.1.7)
+## Phase 7 - Discipline Requests (Version 0.1.6)
 
 ### Request Workflow
 
@@ -203,114 +187,3 @@ Administrators can assign and manage moderators for disciplines.
 Users can request new disciplines and administrators can manage the approval process.
 
 ---
-
-## Phase 9 - Configuration (Version 0.1.8)
-
-### Settings
-
-- General configuration
-- Permission settings
-- Application settings
-
-### Terminology
-
-- Configurable terminology
-- Discipline naming configuration
-- Moderator naming configuration
-
-### Languages
-
-- Translation management
-- Language fallback handling
-
-### Result
-
-DisciplineCoach becomes highly configurable.
-
----
-
-## Phase 10 - User Experience (Version 0.1.9)
-
-### Frontend
-
-- My disciplines
-- My memberships
-- Moderator overview
-- Personal dashboard
-
-### Dashboard
-
-- Statistics
-- Recent activity
-- Quick actions
-- Summary information
-
-### Result
-
-A complete end-user experience is available.
-
----
-
-## Phase 11 - Documentation (Version 1.0.0)
-
-### User Documentation
-
-- Installation guide
-- Administrator guide
-- User guide
-
-### Developer Documentation
-
-- Architecture guide
-- Database guide
-- Extension guide
-- API documentation
-
-### Result
-
-A production-ready and fully documented release.
-
----
-
-## Future Extensions (Version 2.x)
-
-### Community Features
-
-- Community management
-- Discussion forums
-- Messaging
-- Collaboration tools
-
-### Content
-
-- Documents
-- Images
-- Exercises
-- Training plans
-- Certifications
-- Events
-
-### Artificial Intelligence
-
-#### Image Generation
-
-- AI-generated discipline images
-- Automatic image suggestions
-- Consistent image styles
-
-#### Content Generation
-
-- AI-assisted descriptions
-- AI-assisted translations
-- AI-assisted moderation
-
-### Integrations
-
-- Microsoft 365
-- Microsoft Teams
-- Microsoft Planner
-- Microsoft Outlook
-
-### Result
-
-DisciplineCoach evolves into a complete discipline and community management platform.

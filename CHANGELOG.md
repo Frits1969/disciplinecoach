@@ -4,6 +4,43 @@ All notable changes to this project will be documented in this file.
 
 The format is based on Keep a Changelog.
 
+## [0.1.5] - 2026-11-22
+
+### Added
+- Administrator membership management view (`view=memberships`)
+- Administrator membership edit/create form (`view=membership&layout=edit`)
+- Moderator management (assign, update and revoke moderator privileges per discipline)
+- Visual moderator status indicators (✓ / ✕) in the memberships overview table
+- `MembershipTable` (`administrator/src/Table/MembershipTable.php`) for `#__dc_discipline_memberships`
+- `MembershipModel` extending `AdminModel` for form data handling and validation
+- `MembershipsModel` and `MembershipsController` extending `AdminController`
+- `is_moderator` column in `#__dc_discipline_memberships` table
+- Database schema update script `0.1.5.sql`
+- Uniqueness validation preventing duplicate trainer-discipline memberships
+- Automatic creation timestamp assignment
+- Form definition (`administrator/forms/membership.xml`) with user selector, discipline dropdown and moderator toggle
+- Clickable table rows in memberships overview with hover effect (`#e7f1ff`) and pointer cursor
+- Checkbox click isolation preventing unintended navigation during row selection
+- Joomla toolbar integration: New, Delete, Apply, Save, Save & Close, Cancel
+- CSRF form token protection and validation on membership views
+- Dutch (`nl-NL`) and English (`en-GB`) language strings for membership and moderator administration
+
+### Changed
+- Modernized installer script (`script.php`) to implement `InstallerScriptInterface` via direct class return
+- Replaced deprecated/removed `Joomla\CMS\Filesystem\Folder` calls with native PHP filesystem functions (`is_dir`, `mkdir`, `file_put_contents`) for Joomla 6 compatibility
+- Wrapped installer folder creation and asset deployment in exception handling to prevent installation halts
+- Corrected edit form identifier to standard `adminForm` for seamless Joomla toolbar integration
+- Standardized toolbar button definitions using `ToolbarHelper::addNew()`
+
+### Fixed
+- Fatal PHP error during component installation caused by missing `getParent()` on installer adapter
+- "Class Joomla\CMS\Filesystem\Folder not found" error during extension installation in Joomla 6
+- Non-functioning toolbar buttons on the memberships list view caused by missing `adminForm` container
+- "Table membership not supported. File not found" exception during membership save operations
+
+### Result
+Administrators can now view, create, edit and delete trainer-discipline memberships directly in the Joomla administrator interface, fully manage moderator privileges per membership, and experience a smooth, clickable overview table aligned with the discipline management interface.
+
 ## [0.1.4] - 2026-11-19
 
 ### Added

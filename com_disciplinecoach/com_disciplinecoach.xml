@@ -8,8 +8,8 @@
     Purpose     : Joomla component installation manifest.
     Author      : Frits van Leeuwen
     Created     : 2026-10-28
-    Modified    : 2026-11-11
-    Version     : 0.1.4
+    Modified    : 2026-11-20
+    Version     : 0.1.5
     Copyright   : Copyright (C) 2026 Frits van Leeuwen
     License     : GNU General Public License version 2 or later
     ========================================================================
@@ -25,7 +25,7 @@
     <license>
         GNU General Public License version 2 or later
     </license>
-    <version>0.1.4</version>
+    <version>0.1.5</version>
     <description>COM_DISCIPLINECOACH_DESCRIPTION</description>
 
     <scriptfile>script.php</scriptfile>

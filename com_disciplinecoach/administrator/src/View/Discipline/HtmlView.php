@@ -13,8 +13,8 @@
  *
  * Author      : Frits van Leeuwen
  * Created     : 2026-11-03
- * Modified    : 2026-11-10
- * Version     : 0.1.3
+ * Modified    : 2026-11-27
+ * Version     : 0.1.5
  *
  * Copyright   : Copyright (C) 2026 Frits van Leeuwen
  * License     : GNU General Public License version 2 or later
@@ -31,12 +31,30 @@ use Joomla\CMS\Language\LanguageHelper;
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 use Joomla\Database\DatabaseInterface;
 use Joomla\Database\ParameterType;
+use Joomla\CMS\Toolbar\ToolbarHelper;
+use Joomla\CMS\Language\Text;
 
 /**
  * Discipline HTML View.
  */
 class HtmlView extends BaseHtmlView
 {
+    protected function addToolbar(): void
+    {
+        ToolbarHelper::title(
+            Text::_('COM_DISCIPLINECOACH_COMPONENT_TITLE'),
+            'users'
+        );
+
+        ToolbarHelper::apply('discipline.apply');
+
+        ToolbarHelper::save('discipline.save');
+
+        ToolbarHelper::save2new('discipline.save2new');
+
+        ToolbarHelper::cancel('discipline.cancel');
+    }
+
     /**
      * Main discipline record.
      *
@@ -131,14 +149,18 @@ class HtmlView extends BaseHtmlView
         }
 
         // Het Joomla-formulier met de gedeelde velden ophalen.
-        $model      = $this->getModel();
-        $this->form = $model->getForm();
+        $model       = $this->getModel();
+        $this->form  = $model->getForm();
 
         if ($this->item !== null) {
             $this->form->bind((array) $this->item);
         }
 
-        parent::display($tpl);
+        $this->setLayout('edit');
+
+        $this->addToolbar();
+
+        parent::display();
     }
 
     /**

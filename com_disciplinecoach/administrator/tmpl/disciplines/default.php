@@ -39,54 +39,50 @@ use Joomla\CMS\Language\Text;
 
         </div>
 
-        <div class="dc-toolbar mb-3">
+        <a href="index.php?option=com_disciplinecoach&view=discipline" class="btn btn-outline-success">
+            <?php echo Text::_('COM_DISCIPLINECOACH_NEW_DISCIPLINE'); ?>
+        </a>
 
-            <a href="index.php?option=com_disciplinecoach&view=discipline" class="btn btn-success">
-                <?php echo Text::_('COM_DISCIPLINECOACH_NEW_DISCIPLINE'); ?>
-            </a>
+        <div class="btn-group">
 
-            <div class="btn-group">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <?php echo Text::_('COM_DISCIPLINECOACH_ACTIONS'); ?>
+            </button>
 
-                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    <?php echo Text::_('COM_DISCIPLINECOACH_ACTIONS'); ?>
-                </button>
+            <ul class="dropdown-menu">
 
-                <ul class="dropdown-menu">
-
-                    <li>
-                        <a class="dropdown-item" href="#" onclick="
+                <li>
+                    <a class="dropdown-item" href="#" onclick="
         document.querySelector('[name=task]').value='disciplines.publish';
         document.getElementById('adminForm').submit();
         return false;
     ">
-                            <?php echo Text::_('COM_DISCIPLINECOACH_PUBLISH_SELECTED'); ?>
-                        </a>
-                    </li>
+                        <?php echo Text::_('COM_DISCIPLINECOACH_PUBLISH_SELECTED'); ?>
+                    </a>
+                </li>
 
-                    <li>
-                        <a class="dropdown-item" href="#" onclick="
+                <li>
+                    <a class="dropdown-item" href="#" onclick="
         document.querySelector('[name=task]').value='disciplines.unpublish';
         document.getElementById('adminForm').submit();
         return false;
     ">
-                            <?php echo Text::_('COM_DISCIPLINECOACH_UNPUBLISH_SELECTED'); ?>
-                        </a>
-                    </li>
+                        <?php echo Text::_('COM_DISCIPLINECOACH_UNPUBLISH_SELECTED'); ?>
+                    </a>
+                </li>
 
-                    <li>
-                        <a class="dropdown-item" href="#" onclick="
+                <li>
+                    <a class="dropdown-item" href="#" onclick="
                             document.querySelector('[name=task]').value='disciplines.delete';
                             document.getElementById('adminForm').submit();
                             return false;
                         ">
-                            <?php echo Text::_('COM_DISCIPLINECOACH_DELETE_SELECTED'); ?>
-                        </a>
-                    </li>
+                        <?php echo Text::_('COM_DISCIPLINECOACH_DELETE_SELECTED'); ?>
+                    </a>
+                </li>
 
-                </ul>
-
-            </div>
+            </ul>
 
         </div>
 

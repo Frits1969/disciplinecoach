@@ -333,11 +333,17 @@ Coach administration is planned for future versions.
 
 A Joomla user with additional responsibilities within a specific discipline.
 
-Moderator privileges are discipline-specific.
+Moderator privileges are discipline-specific and stored directly as an attribute (`is_moderator`) on the discipline membership record (`#__dc_discipline_memberships`).
 
-A moderator remains a normal discipline member with additional permissions.
+A moderator remains a normal discipline member with elevated permissions.
 
-Moderator management is planned for version 0.1.6.
+---
+
+## Clickable Rows
+
+An interactive user interface pattern where an entire table row acts as a button or link to open the corresponding record's edit view.
+
+DisciplineCoach uses `.dc-row-clickable` with hover background highlighting (`#e7f1ff`) and a pointer cursor across overview tables. The checkbox cell intercepts click events (`event.stopPropagation()`) so administrators can select items for bulk actions without triggering row navigation.
 
 ---
 

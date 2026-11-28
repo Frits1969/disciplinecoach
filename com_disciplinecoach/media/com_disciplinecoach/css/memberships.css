@@ -1,0 +1,103 @@
+/**
+ * ========================================================================
+ * DisciplineCoach
+ * Joomla 6 Component
+ * ========================================================================
+ *
+ * File        : memberships.css
+ * Path        : media/com_disciplinecoach/css/memberships.css
+ * Purpose     : Styling for the Memberships administration view.
+ *
+ * Author      : Frits van Leeuwen
+ * Created     : 2026-11-22
+ * Modified    : 2026-11-22
+ * Version     : 0.1.5
+ *
+ * Copyright   : Copyright (C) 2026 Frits van Leeuwen
+ * License     : GNU General Public License version 2 or later
+ *
+ * ========================================================================
+ */
+
+.dc-memberships-header {
+    margin-bottom: 2rem;
+}
+
+.dc-toolbar {
+    margin-bottom: 1.5rem;
+}
+
+.dc-toolbar .btn {
+    margin-right: 0.5rem;
+}
+
+/* ==========================================================
+   Membership table
+   ========================================================== */
+
+.dc-membership-table {
+    width: 100%;
+}
+
+.dc-membership-table th {
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+.dc-membership-table td {
+    vertical-align: middle;
+}
+
+/* ==========================================================
+   Checkboxes
+   ========================================================== */
+
+input[name="cid[]"],
+#checkAll,
+.dc-membership-checkbox {
+    width: 2rem;
+    height: 2rem;
+    margin: 0.25rem;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+/* ==========================================================
+   Moderator indicators
+   ========================================================== */
+
+.dc-moderator-yes {
+    color: #198754 !important; /* Bootstrap groen */
+    font-size: 1.4rem !important;
+    font-weight: bold !important;
+}
+
+.dc-moderator-no {
+    color: #dc3545 !important; /* Bootstrap rood */
+    font-size: 1.4rem !important;
+    font-weight: bold !important;
+}
+
+/* ==========================================================
+   Clickable rows
+   ========================================================== */
+
+.dc-row-clickable {
+    cursor: pointer;
+}
+
+.dc-row-clickable td {
+    transition: background-color 0.15s ease;
+}
+
+.dc-row-clickable:hover td {
+    background-color: #e7f1ff !important;
+}
+
+/* ==========================================================
+   Dates
+   ========================================================== */
+
+.dc-membership-date {
+    white-space: nowrap;
+}

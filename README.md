@@ -32,32 +32,24 @@ The component is designed as a flexible foundation for organisations, communitie
 
 ## Current Status
 
-### Version 0.1.4
+### Version 0.1.5
 
-The component currently provides discipline management in the Joomla administrator interface and discipline selection in the Joomla frontend.
+The component currently provides discipline management, membership administration and moderator management in the Joomla administrator interface, alongside discipline selection in the Joomla frontend.
 
 ### Administrator Features
 
-- Discipline administration
-- Create disciplines
-- Edit disciplines
-- Delete disciplines
-- Publish disciplines
-- Unpublish disciplines
-- Bulk publish
-- Bulk unpublish
-- Bulk delete
-- Search by title
-- Search by alias
-- Status filtering
-- Sorting by title
-- Sorting by alias
-- Sorting by publication status
-- Discipline image support
-- Joomla Media Manager integration
-- Multilingual discipline names
-- Multilingual discipline aliases
-- Language-aware administration
+- Discipline administration (create, edit, delete, publish, unpublish, bulk operations)
+- Multilingual discipline names and aliases
+- Discipline image support via Joomla Media Manager
+- Membership / Trainer administration (`view=memberships`)
+- Create and edit trainer-discipline memberships
+- Moderator management (assign, modify and revoke moderator privileges per discipline)
+- Visual moderator status indicators (✓ / ✕) in overview tables
+- Duplicate membership prevention
+- Clickable overview table rows with visual hover effects
+- Bulk deletion of memberships
+- Multilingual administrator interface (Dutch and English)
+- Central administrator dashboard
 
 ### Frontend Features
 
@@ -110,29 +102,27 @@ Current tables include:
 
 - #__dc_disciplines
 - #__dc_disciplines_lang
-- #__dc_user_disciplines
+- #__dc_discipline_memberships (including moderator status)
 
 ## Release Roadmap
 
-### Version 0.1.5
+### Version 0.1.5 ✅ Completed
 
-Planned:
-
-- Further frontend improvements
-- Membership administration foundation
-- Improved administrator workflows
-- Additional validation and usability improvements
+- Membership administration in the Joomla backend
+- Trainer-discipline linking and editing
+- Moderator management (assign, change and revoke moderator status)
+- Visual moderator status indicators in overview tables
+- Clickable row UX pattern in list overviews
+- Joomla 6 installer modernization and resilience
 
 ### Version 0.1.6
 
 Planned:
 
-- Moderator administration
-- Assign a moderator to a discipline
-- Change moderator assignments
-- Remove moderator assignments
-- Moderator overview per discipline
-- Discipline overview per moderator
+- Discipline Requests workflow
+- Request new disciplines from frontend
+- Administrator review and approval process
+- Audit information and status tracking
 
 ## Future Development
 

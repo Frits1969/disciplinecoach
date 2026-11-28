@@ -13,8 +13,8 @@
  *
  * Author      : Frits van Leeuwen
  * Created     : 2026-11-10
- * Modified    : 2026-11-10
- * Version     : 0.1.3
+ * Modified    : 2026-11-25
+ * Version     : 0.1.5
  *
  * Copyright   : Copyright (C) 2026 Frits van Leeuwen
  * License     : GNU General Public License version 2 or later
@@ -29,12 +29,22 @@ defined('_JEXEC') or die;
 use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 use Joomla\CMS\Uri\Uri;
+use Joomla\CMS\Toolbar\ToolbarHelper;
+use Joomla\CMS\Language\Text;
 
 /**
  * Disciplines administrator overview.
  */
 class HtmlView extends BaseHtmlView
 {
+    protected function addToolbar(): void
+    {
+        ToolbarHelper::title(
+            Text::_('COM_DISCIPLINECOACH_COMPONENT_TITLE'),
+            'users'
+        );
+    }
+
     /**
      * Disciplines displayed in the overview.
      *
@@ -59,6 +69,8 @@ class HtmlView extends BaseHtmlView
         );
 
         $this->items = $this->get('Items');
+
+        $this->addToolbar();
 
         parent::display($tpl);
     }

@@ -11,8 +11,8 @@
  *
  * Author      : Frits van Leeuwen
  * Created     : 2026-11-03
- * Modified    : 2026-11-10
- * Version     : 0.1.3
+ * Modified    : 2026-11-27
+ * Version     : 0.1.5
  *
  * Copyright   : Copyright (C) 2026 Frits van Leeuwen
  * License     : GNU General Public License version 2 or later
@@ -47,6 +47,10 @@ class DisciplineController extends BaseController
     public function save(): void
     {
         $application = Factory::getApplication();
+        $task = $application->input->getCmd(
+            'task',
+            'discipline.save'
+        );
 
         if (!Session::checkToken()) {
             throw new RuntimeException(
@@ -193,14 +197,66 @@ class DisciplineController extends BaseController
 
             $database->transactionCommit();
 
-            $this->setRedirect(
-                'index.php?option=com_disciplinecoach'
-                . '&view=disciplines',
-                Text::_(
-                    'COM_DISCIPLINECOACH_MESSAGE_DISCIPLINE_SAVED'
-                ),
-                'message'
-            );
+            switch ($task)
+            {
+                case 'apply':
+                case 'discipline.apply':
+
+                    $this->setRedirect(
+                        'index.php?option=com_disciplinecoach'
+                        . '&view=discipline'
+                        . '&id=' . (int) $id,
+                        Text::_(
+                            'COM_DISCIPLINECOACH_MESSAGE_DISCIPLINE_SAVED'
+                        ),
+                        'message'
+                    );
+
+                    break;
+
+                case 'save2new':
+                case 'discipline.save2new':
+
+                    $this->setRedirect(
+                        'index.php?option=com_disciplinecoach'
+                        . '&view=discipline',
+                        Text::_(
+                            'COM_DISCIPLINECOACH_MESSAGE_DISCIPLINE_SAVED'
+                        ),
+                        'message'
+                    );
+
+                    break;
+
+                case 'save':
+                case 'discipline.saveclose':
+
+                    $this->setRedirect(
+                        'index.php?option=com_disciplinecoach'
+                        . '&view=disciplines',
+                        Text::_(
+                            'COM_DISCIPLINECOACH_MESSAGE_DISCIPLINE_SAVED'
+                        ),
+                        'message'
+                    );
+
+                    break;
+
+                case 'discipline.save':
+
+                    $this->setRedirect(
+                        'index.php?option=com_disciplinecoach'
+                        . '&view=discipline'
+                        . '&id=' . (int) $id,
+                        Text::_(
+                            'COM_DISCIPLINECOACH_MESSAGE_DISCIPLINE_SAVED'
+                        ),
+                        'message'
+                    );
+
+                    break;
+
+            }
         } catch (Throwable $exception) {
             try {
                 $database->transactionRollback();
@@ -227,6 +283,51 @@ class DisciplineController extends BaseController
 
             $this->setRedirect($redirectUrl);
         }
+    }
+
+    public function apply(): void
+    {
+        $application = Factory::getApplication();
+
+        $application->input->set(
+            'task',
+            'discipline.apply'
+        );
+
+        $this->save();
+    }
+
+    public function save2new(): void
+    {
+        $application = Factory::getApplication();
+
+        $application->input->set(
+            'task',
+            'discipline.save2new'
+        );
+
+        $this->save();
+    }
+
+    public function saveclose(): void
+    {
+        die('saveclose bereikt');
+        $application = Factory::getApplication();
+
+        $application->input->set(
+            'task',
+            'discipline.saveclose'
+        );
+
+        $this->save();
+    }
+
+    public function cancel(): void
+    {
+        $this->setRedirect(
+            'index.php?option=com_disciplinecoach'
+            . '&view=disciplines'
+        );
     }
 
     /**
